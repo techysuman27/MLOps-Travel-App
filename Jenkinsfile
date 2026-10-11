@@ -18,7 +18,11 @@ pipeline {
     }
     stage('Build') {
       steps {
-        script { env.RELEASE_TAG = sh(script: 'git rev-parse --short=12 HEAD', returnStdout: true).trim() + '-' + env.BUILD_NUMBER }
+        script {
+          // The first run may begin before Jenkins exports newly declared parameters.
+          env.IMAGE_REPOSITORY = params.IMAGE_REPOSITORY ?: 'ghcr.io/techysuman27/voyage-api'
+          env.RELEASE_TAG = sh(script: 'git rev-parse --short=12 HEAD', returnStdout: true).trim() + '-' + env.BUILD_NUMBER
+        }
         sh 'docker build -f docker/Dockerfile.api -t "$IMAGE_REPOSITORY:$RELEASE_TAG" .'
       }
     }
