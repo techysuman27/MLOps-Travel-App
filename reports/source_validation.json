@@ -1,0 +1,14 @@
+{
+  "flights": {
+    "rows": 271888,
+    "sha256": "d223ef92841d871b26a6a148aaf755075a9bafc0856efe4f2051604768ecf64b"
+  },
+  "users": {
+    "rows": 1340,
+    "sha256": "d551fa03528b1c79e090ab6c3c4fa17eeed8d7e78dcfdf1a0cf65ecb51a68a56"
+  },
+  "hotels": {
+    "rows": 40552,
+    "sha256": "18b21c8e9ca406c6332b15446b2e6f1c10928df142fc70b3f3fd72abd35337d0"
+  }
+}

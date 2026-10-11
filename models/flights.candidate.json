@@ -1,0 +1,1542 @@
+{
+  "task": "flights",
+  "version": "dac3c974d6ea4aeb9d8ca90bec6a0318",
+  "artifact": "releases/flights/dac3c974d6ea4aeb9d8ca90bec6a0318/model.joblib",
+  "sha256": "9029b77f89916a47ae436fd41021f9c2bf2ae909b16418a3356ff8ca29d02f71",
+  "report": {
+    "selected": "hist_gradient_200",
+    "split": {
+      "validation_start": "2021-07-01",
+      "test_start": "2022-02-17",
+      "train_rows": 189782,
+      "validation_rows": 40918,
+      "test_rows": 41188,
+      "purged_rows": 0
+    },
+    "validation_candidates": [
+      {
+        "model": "median_baseline",
+        "mae": 300.83804291509847,
+        "rmse": 366.2694036856615,
+        "r2": -0.02648563776891244,
+        "fit_seconds": 1.017055100062862
+      },
+      {
+        "model": "ridge",
+        "mae": 80.5945288111373,
+        "rmse": 102.45710551495156,
+        "r2": 0.9196777695766352,
+        "fit_seconds": 0.9032013999531046
+      },
+      {
+        "model": "hist_gradient_100",
+        "mae": 12.609021852769722,
+        "rmse": 15.910482555169713,
+        "r2": 0.9980630505001828,
+        "fit_seconds": 7.094955199980177
+      },
+      {
+        "model": "hist_gradient_200",
+        "mae": 5.044376475668802,
+        "rmse": 6.616208429511291,
+        "r2": 0.9996650577364032,
+        "fit_seconds": 9.927856800029986
+      }
+    ],
+    "test_metrics": {
+      "mae": 5.749933099004278,
+      "rmse": 7.6935198005524255,
+      "r2": 0.9995496505316817
+    },
+    "test_baseline": {
+      "mae": 302.31065723026126,
+      "rmse": 368.252820289074,
+      "r2": -0.031790834921529676
+    },
+    "error_slices": [
+      {
+        "from": "Aracaju (SE)",
+        "to": "Brasilia (DF)",
+        "flightType": "economic",
+        "n": 218,
+        "mae": 18.027944378781484
+      },
+      {
+        "from": "Aracaju (SE)",
+        "to": "Brasilia (DF)",
+        "flightType": "firstClass",
+        "n": 309,
+        "mae": 3.5398640090474203
+      },
+      {
+        "from": "Aracaju (SE)",
+        "to": "Brasilia (DF)",
+        "flightType": "premium",
+        "n": 199,
+        "mae": 13.065893252061045
+      },
+      {
+        "from": "Aracaju (SE)",
+        "to": "Campo Grande (MS)",
+        "flightType": "economic",
+        "n": 225,
+        "mae": 4.5152373751638315
+      },
+      {
+        "from": "Aracaju (SE)",
+        "to": "Campo Grande (MS)",
+        "flightType": "firstClass",
+        "n": 381,
+        "mae": 2.1402740400097704
+      },
+      {
+        "from": "Aracaju (SE)",
+        "to": "Campo Grande (MS)",
+        "flightType": "premium",
+        "n": 231,
+        "mae": 8.312772954339763
+      },
+      {
+        "from": "Aracaju (SE)",
+        "to": "Florianopolis (SC)",
+        "flightType": "economic",
+        "n": 396,
+        "mae": 1.5174808519844942
+      },
+      {
+        "from": "Aracaju (SE)",
+        "to": "Florianopolis (SC)",
+        "flightType": "firstClass",
+        "n": 565,
+        "mae": 5.460800879254041
+      },
+      {
+        "from": "Aracaju (SE)",
+        "to": "Florianopolis (SC)",
+        "flightType": "premium",
+        "n": 375,
+        "mae": 7.2365928461859745
+      },
+      {
+        "from": "Aracaju (SE)",
+        "to": "Natal (RN)",
+        "flightType": "economic",
+        "n": 165,
+        "mae": 6.102468628606497
+      },
+      {
+        "from": "Aracaju (SE)",
+        "to": "Natal (RN)",
+        "flightType": "firstClass",
+        "n": 242,
+        "mae": 7.6884698104637055
+      },
+      {
+        "from": "Aracaju (SE)",
+        "to": "Natal (RN)",
+        "flightType": "premium",
+        "n": 137,
+        "mae": 11.987139971345567
+      },
+      {
+        "from": "Aracaju (SE)",
+        "to": "Recife (PE)",
+        "flightType": "economic",
+        "n": 211,
+        "mae": 2.5354574434991384
+      },
+      {
+        "from": "Aracaju (SE)",
+        "to": "Recife (PE)",
+        "flightType": "firstClass",
+        "n": 331,
+        "mae": 3.3263251502160527
+      },
+      {
+        "from": "Aracaju (SE)",
+        "to": "Recife (PE)",
+        "flightType": "premium",
+        "n": 205,
+        "mae": 8.127643146490387
+      },
+      {
+        "from": "Aracaju (SE)",
+        "to": "Rio de Janeiro (RJ)",
+        "flightType": "economic",
+        "n": 118,
+        "mae": 2.2341423822799737
+      },
+      {
+        "from": "Aracaju (SE)",
+        "to": "Rio de Janeiro (RJ)",
+        "flightType": "firstClass",
+        "n": 171,
+        "mae": 2.451944383695044
+      },
+      {
+        "from": "Aracaju (SE)",
+        "to": "Rio de Janeiro (RJ)",
+        "flightType": "premium",
+        "n": 124,
+        "mae": 5.462793500328768
+      },
+      {
+        "from": "Aracaju (SE)",
+        "to": "Salvador (BH)",
+        "flightType": "economic",
+        "n": 131,
+        "mae": 2.169952278937575
+      },
+      {
+        "from": "Aracaju (SE)",
+        "to": "Salvador (BH)",
+        "flightType": "firstClass",
+        "n": 164,
+        "mae": 2.403625839040426
+      },
+      {
+        "from": "Aracaju (SE)",
+        "to": "Salvador (BH)",
+        "flightType": "premium",
+        "n": 115,
+        "mae": 2.0916484366858326
+      },
+      {
+        "from": "Aracaju (SE)",
+        "to": "Sao Paulo (SP)",
+        "flightType": "economic",
+        "n": 182,
+        "mae": 5.6666252162347615
+      },
+      {
+        "from": "Aracaju (SE)",
+        "to": "Sao Paulo (SP)",
+        "flightType": "firstClass",
+        "n": 227,
+        "mae": 1.034126024791934
+      },
+      {
+        "from": "Aracaju (SE)",
+        "to": "Sao Paulo (SP)",
+        "flightType": "premium",
+        "n": 158,
+        "mae": 8.304469869607901
+      },
+      {
+        "from": "Brasilia (DF)",
+        "to": "Aracaju (SE)",
+        "flightType": "economic",
+        "n": 218,
+        "mae": 12.675470961945752
+      },
+      {
+        "from": "Brasilia (DF)",
+        "to": "Aracaju (SE)",
+        "flightType": "firstClass",
+        "n": 309,
+        "mae": 8.747684203992142
+      },
+      {
+        "from": "Brasilia (DF)",
+        "to": "Aracaju (SE)",
+        "flightType": "premium",
+        "n": 199,
+        "mae": 6.770348110553873
+      },
+      {
+        "from": "Brasilia (DF)",
+        "to": "Campo Grande (MS)",
+        "flightType": "economic",
+        "n": 191,
+        "mae": 3.568879591908747
+      },
+      {
+        "from": "Brasilia (DF)",
+        "to": "Campo Grande (MS)",
+        "flightType": "firstClass",
+        "n": 342,
+        "mae": 4.586730440553653
+      },
+      {
+        "from": "Brasilia (DF)",
+        "to": "Campo Grande (MS)",
+        "flightType": "premium",
+        "n": 190,
+        "mae": 2.168150854979332
+      },
+      {
+        "from": "Brasilia (DF)",
+        "to": "Florianopolis (SC)",
+        "flightType": "economic",
+        "n": 346,
+        "mae": 0.9845961759800244
+      },
+      {
+        "from": "Brasilia (DF)",
+        "to": "Florianopolis (SC)",
+        "flightType": "firstClass",
+        "n": 540,
+        "mae": 5.120866726130959
+      },
+      {
+        "from": "Brasilia (DF)",
+        "to": "Florianopolis (SC)",
+        "flightType": "premium",
+        "n": 357,
+        "mae": 2.866505266840009
+      },
+      {
+        "from": "Brasilia (DF)",
+        "to": "Natal (RN)",
+        "flightType": "economic",
+        "n": 117,
+        "mae": 19.720653837540286
+      },
+      {
+        "from": "Brasilia (DF)",
+        "to": "Natal (RN)",
+        "flightType": "firstClass",
+        "n": 199,
+        "mae": 11.090505666303093
+      },
+      {
+        "from": "Brasilia (DF)",
+        "to": "Natal (RN)",
+        "flightType": "premium",
+        "n": 103,
+        "mae": 7.921367902075863
+      },
+      {
+        "from": "Brasilia (DF)",
+        "to": "Recife (PE)",
+        "flightType": "economic",
+        "n": 167,
+        "mae": 2.8045780496306585
+      },
+      {
+        "from": "Brasilia (DF)",
+        "to": "Recife (PE)",
+        "flightType": "firstClass",
+        "n": 254,
+        "mae": 8.231699133212377
+      },
+      {
+        "from": "Brasilia (DF)",
+        "to": "Recife (PE)",
+        "flightType": "premium",
+        "n": 158,
+        "mae": 6.1943047656938095
+      },
+      {
+        "from": "Brasilia (DF)",
+        "to": "Rio de Janeiro (RJ)",
+        "flightType": "economic",
+        "n": 85,
+        "mae": 2.71556697875576
+      },
+      {
+        "from": "Brasilia (DF)",
+        "to": "Rio de Janeiro (RJ)",
+        "flightType": "firstClass",
+        "n": 117,
+        "mae": 3.599648773037908
+      },
+      {
+        "from": "Brasilia (DF)",
+        "to": "Rio de Janeiro (RJ)",
+        "flightType": "premium",
+        "n": 82,
+        "mae": 1.125511046072063
+      },
+      {
+        "from": "Brasilia (DF)",
+        "to": "Salvador (BH)",
+        "flightType": "economic",
+        "n": 105,
+        "mae": 1.6451259450274327
+      },
+      {
+        "from": "Brasilia (DF)",
+        "to": "Salvador (BH)",
+        "flightType": "firstClass",
+        "n": 127,
+        "mae": 3.596233850880507
+      },
+      {
+        "from": "Brasilia (DF)",
+        "to": "Salvador (BH)",
+        "flightType": "premium",
+        "n": 88,
+        "mae": 10.144920432916877
+      },
+      {
+        "from": "Brasilia (DF)",
+        "to": "Sao Paulo (SP)",
+        "flightType": "economic",
+        "n": 108,
+        "mae": 4.9662195311063835
+      },
+      {
+        "from": "Brasilia (DF)",
+        "to": "Sao Paulo (SP)",
+        "flightType": "firstClass",
+        "n": 158,
+        "mae": 6.408835792297227
+      },
+      {
+        "from": "Brasilia (DF)",
+        "to": "Sao Paulo (SP)",
+        "flightType": "premium",
+        "n": 112,
+        "mae": 7.785347953406017
+      },
+      {
+        "from": "Campo Grande (MS)",
+        "to": "Aracaju (SE)",
+        "flightType": "economic",
+        "n": 225,
+        "mae": 4.982635613662838
+      },
+      {
+        "from": "Campo Grande (MS)",
+        "to": "Aracaju (SE)",
+        "flightType": "firstClass",
+        "n": 381,
+        "mae": 4.046417077413
+      },
+      {
+        "from": "Campo Grande (MS)",
+        "to": "Aracaju (SE)",
+        "flightType": "premium",
+        "n": 231,
+        "mae": 11.287058675732293
+      },
+      {
+        "from": "Campo Grande (MS)",
+        "to": "Brasilia (DF)",
+        "flightType": "economic",
+        "n": 191,
+        "mae": 4.3469103174179935
+      },
+      {
+        "from": "Campo Grande (MS)",
+        "to": "Brasilia (DF)",
+        "flightType": "firstClass",
+        "n": 342,
+        "mae": 12.163051681061283
+      },
+      {
+        "from": "Campo Grande (MS)",
+        "to": "Brasilia (DF)",
+        "flightType": "premium",
+        "n": 190,
+        "mae": 13.367874111078706
+      },
+      {
+        "from": "Campo Grande (MS)",
+        "to": "Florianopolis (SC)",
+        "flightType": "economic",
+        "n": 344,
+        "mae": 6.629454089033883
+      },
+      {
+        "from": "Campo Grande (MS)",
+        "to": "Florianopolis (SC)",
+        "flightType": "firstClass",
+        "n": 613,
+        "mae": 10.24053956428873
+      },
+      {
+        "from": "Campo Grande (MS)",
+        "to": "Florianopolis (SC)",
+        "flightType": "premium",
+        "n": 374,
+        "mae": 4.804551983255002
+      },
+      {
+        "from": "Campo Grande (MS)",
+        "to": "Natal (RN)",
+        "flightType": "economic",
+        "n": 148,
+        "mae": 13.715084226101446
+      },
+      {
+        "from": "Campo Grande (MS)",
+        "to": "Natal (RN)",
+        "flightType": "firstClass",
+        "n": 234,
+        "mae": 14.195111938775387
+      },
+      {
+        "from": "Campo Grande (MS)",
+        "to": "Natal (RN)",
+        "flightType": "premium",
+        "n": 136,
+        "mae": 19.257974254903473
+      },
+      {
+        "from": "Campo Grande (MS)",
+        "to": "Recife (PE)",
+        "flightType": "economic",
+        "n": 169,
+        "mae": 6.512756150815336
+      },
+      {
+        "from": "Campo Grande (MS)",
+        "to": "Recife (PE)",
+        "flightType": "firstClass",
+        "n": 278,
+        "mae": 8.621817393864669
+      },
+      {
+        "from": "Campo Grande (MS)",
+        "to": "Recife (PE)",
+        "flightType": "premium",
+        "n": 190,
+        "mae": 7.333660231694627
+      },
+      {
+        "from": "Campo Grande (MS)",
+        "to": "Rio de Janeiro (RJ)",
+        "flightType": "economic",
+        "n": 102,
+        "mae": 1.737699339516651
+      },
+      {
+        "from": "Campo Grande (MS)",
+        "to": "Rio de Janeiro (RJ)",
+        "flightType": "firstClass",
+        "n": 141,
+        "mae": 4.507766620418826
+      },
+      {
+        "from": "Campo Grande (MS)",
+        "to": "Rio de Janeiro (RJ)",
+        "flightType": "premium",
+        "n": 116,
+        "mae": 3.6503721185202087
+      },
+      {
+        "from": "Campo Grande (MS)",
+        "to": "Salvador (BH)",
+        "flightType": "economic",
+        "n": 100,
+        "mae": 4.442976114518392
+      },
+      {
+        "from": "Campo Grande (MS)",
+        "to": "Salvador (BH)",
+        "flightType": "firstClass",
+        "n": 163,
+        "mae": 15.13686701712107
+      },
+      {
+        "from": "Campo Grande (MS)",
+        "to": "Salvador (BH)",
+        "flightType": "premium",
+        "n": 105,
+        "mae": 10.2546135047934
+      },
+      {
+        "from": "Campo Grande (MS)",
+        "to": "Sao Paulo (SP)",
+        "flightType": "economic",
+        "n": 164,
+        "mae": 1.2409172047950392
+      },
+      {
+        "from": "Campo Grande (MS)",
+        "to": "Sao Paulo (SP)",
+        "flightType": "firstClass",
+        "n": 233,
+        "mae": 1.2128662028201112
+      },
+      {
+        "from": "Campo Grande (MS)",
+        "to": "Sao Paulo (SP)",
+        "flightType": "premium",
+        "n": 139,
+        "mae": 4.365430238835695
+      },
+      {
+        "from": "Florianopolis (SC)",
+        "to": "Aracaju (SE)",
+        "flightType": "economic",
+        "n": 396,
+        "mae": 12.379649180400515
+      },
+      {
+        "from": "Florianopolis (SC)",
+        "to": "Aracaju (SE)",
+        "flightType": "firstClass",
+        "n": 565,
+        "mae": 3.188505484193634
+      },
+      {
+        "from": "Florianopolis (SC)",
+        "to": "Aracaju (SE)",
+        "flightType": "premium",
+        "n": 375,
+        "mae": 10.714716589774536
+      },
+      {
+        "from": "Florianopolis (SC)",
+        "to": "Brasilia (DF)",
+        "flightType": "economic",
+        "n": 346,
+        "mae": 12.011601934605348
+      },
+      {
+        "from": "Florianopolis (SC)",
+        "to": "Brasilia (DF)",
+        "flightType": "firstClass",
+        "n": 540,
+        "mae": 1.0817793598089827
+      },
+      {
+        "from": "Florianopolis (SC)",
+        "to": "Brasilia (DF)",
+        "flightType": "premium",
+        "n": 357,
+        "mae": 8.203405254477381
+      },
+      {
+        "from": "Florianopolis (SC)",
+        "to": "Campo Grande (MS)",
+        "flightType": "economic",
+        "n": 344,
+        "mae": 11.061657400055918
+      },
+      {
+        "from": "Florianopolis (SC)",
+        "to": "Campo Grande (MS)",
+        "flightType": "firstClass",
+        "n": 613,
+        "mae": 5.721127430659421
+      },
+      {
+        "from": "Florianopolis (SC)",
+        "to": "Campo Grande (MS)",
+        "flightType": "premium",
+        "n": 374,
+        "mae": 1.311295890071972
+      },
+      {
+        "from": "Florianopolis (SC)",
+        "to": "Natal (RN)",
+        "flightType": "economic",
+        "n": 304,
+        "mae": 10.518884516231793
+      },
+      {
+        "from": "Florianopolis (SC)",
+        "to": "Natal (RN)",
+        "flightType": "firstClass",
+        "n": 460,
+        "mae": 3.7562662030296097
+      },
+      {
+        "from": "Florianopolis (SC)",
+        "to": "Natal (RN)",
+        "flightType": "premium",
+        "n": 300,
+        "mae": 9.014262126676906
+      },
+      {
+        "from": "Florianopolis (SC)",
+        "to": "Recife (PE)",
+        "flightType": "economic",
+        "n": 333,
+        "mae": 3.610295958631053
+      },
+      {
+        "from": "Florianopolis (SC)",
+        "to": "Recife (PE)",
+        "flightType": "firstClass",
+        "n": 524,
+        "mae": 16.357199065930683
+      },
+      {
+        "from": "Florianopolis (SC)",
+        "to": "Recife (PE)",
+        "flightType": "premium",
+        "n": 358,
+        "mae": 20.924494242733463
+      },
+      {
+        "from": "Florianopolis (SC)",
+        "to": "Rio de Janeiro (RJ)",
+        "flightType": "economic",
+        "n": 250,
+        "mae": 2.5079304114457055
+      },
+      {
+        "from": "Florianopolis (SC)",
+        "to": "Rio de Janeiro (RJ)",
+        "flightType": "firstClass",
+        "n": 359,
+        "mae": 2.8294207291640756
+      },
+      {
+        "from": "Florianopolis (SC)",
+        "to": "Rio de Janeiro (RJ)",
+        "flightType": "premium",
+        "n": 270,
+        "mae": 2.2954951921780142
+      },
+      {
+        "from": "Florianopolis (SC)",
+        "to": "Salvador (BH)",
+        "flightType": "economic",
+        "n": 249,
+        "mae": 1.067320349923446
+      },
+      {
+        "from": "Florianopolis (SC)",
+        "to": "Salvador (BH)",
+        "flightType": "firstClass",
+        "n": 382,
+        "mae": 1.033856166458591
+      },
+      {
+        "from": "Florianopolis (SC)",
+        "to": "Salvador (BH)",
+        "flightType": "premium",
+        "n": 292,
+        "mae": 2.071138660675615
+      },
+      {
+        "from": "Florianopolis (SC)",
+        "to": "Sao Paulo (SP)",
+        "flightType": "economic",
+        "n": 276,
+        "mae": 4.185663742393466
+      },
+      {
+        "from": "Florianopolis (SC)",
+        "to": "Sao Paulo (SP)",
+        "flightType": "firstClass",
+        "n": 455,
+        "mae": 5.93412906927912
+      },
+      {
+        "from": "Florianopolis (SC)",
+        "to": "Sao Paulo (SP)",
+        "flightType": "premium",
+        "n": 301,
+        "mae": 2.2612147218554117
+      },
+      {
+        "from": "Natal (RN)",
+        "to": "Aracaju (SE)",
+        "flightType": "economic",
+        "n": 165,
+        "mae": 3.573302008332903
+      },
+      {
+        "from": "Natal (RN)",
+        "to": "Aracaju (SE)",
+        "flightType": "firstClass",
+        "n": 242,
+        "mae": 4.456436302746314
+      },
+      {
+        "from": "Natal (RN)",
+        "to": "Aracaju (SE)",
+        "flightType": "premium",
+        "n": 137,
+        "mae": 1.4574511010671654
+      },
+      {
+        "from": "Natal (RN)",
+        "to": "Brasilia (DF)",
+        "flightType": "economic",
+        "n": 117,
+        "mae": 0.8614184114595032
+      },
+      {
+        "from": "Natal (RN)",
+        "to": "Brasilia (DF)",
+        "flightType": "firstClass",
+        "n": 199,
+        "mae": 4.885241911747963
+      },
+      {
+        "from": "Natal (RN)",
+        "to": "Brasilia (DF)",
+        "flightType": "premium",
+        "n": 103,
+        "mae": 3.721289919885648
+      },
+      {
+        "from": "Natal (RN)",
+        "to": "Campo Grande (MS)",
+        "flightType": "economic",
+        "n": 148,
+        "mae": 1.0096895685990355
+      },
+      {
+        "from": "Natal (RN)",
+        "to": "Campo Grande (MS)",
+        "flightType": "firstClass",
+        "n": 234,
+        "mae": 3.238537681780683
+      },
+      {
+        "from": "Natal (RN)",
+        "to": "Campo Grande (MS)",
+        "flightType": "premium",
+        "n": 136,
+        "mae": 2.446380831849112
+      },
+      {
+        "from": "Natal (RN)",
+        "to": "Florianopolis (SC)",
+        "flightType": "economic",
+        "n": 304,
+        "mae": 1.5567978399776639
+      },
+      {
+        "from": "Natal (RN)",
+        "to": "Florianopolis (SC)",
+        "flightType": "firstClass",
+        "n": 460,
+        "mae": 0.6111848898255728
+      },
+      {
+        "from": "Natal (RN)",
+        "to": "Florianopolis (SC)",
+        "flightType": "premium",
+        "n": 300,
+        "mae": 1.9584698929823496
+      },
+      {
+        "from": "Natal (RN)",
+        "to": "Recife (PE)",
+        "flightType": "economic",
+        "n": 125,
+        "mae": 1.778039460313918
+      },
+      {
+        "from": "Natal (RN)",
+        "to": "Recife (PE)",
+        "flightType": "firstClass",
+        "n": 202,
+        "mae": 5.569802689744275
+      },
+      {
+        "from": "Natal (RN)",
+        "to": "Recife (PE)",
+        "flightType": "premium",
+        "n": 131,
+        "mae": 3.160780169632627
+      },
+      {
+        "from": "Natal (RN)",
+        "to": "Rio de Janeiro (RJ)",
+        "flightType": "economic",
+        "n": 41,
+        "mae": 0.3615619369574006
+      },
+      {
+        "from": "Natal (RN)",
+        "to": "Rio de Janeiro (RJ)",
+        "flightType": "firstClass",
+        "n": 58,
+        "mae": 2.285414883621284
+      },
+      {
+        "from": "Natal (RN)",
+        "to": "Rio de Janeiro (RJ)",
+        "flightType": "premium",
+        "n": 23,
+        "mae": 2.2031458474734196
+      },
+      {
+        "from": "Natal (RN)",
+        "to": "Salvador (BH)",
+        "flightType": "economic",
+        "n": 26,
+        "mae": 7.281903673439842
+      },
+      {
+        "from": "Natal (RN)",
+        "to": "Salvador (BH)",
+        "flightType": "firstClass",
+        "n": 46,
+        "mae": 9.175598906030961
+      },
+      {
+        "from": "Natal (RN)",
+        "to": "Salvador (BH)",
+        "flightType": "premium",
+        "n": 39,
+        "mae": 3.0855756264914316
+      },
+      {
+        "from": "Natal (RN)",
+        "to": "Sao Paulo (SP)",
+        "flightType": "economic",
+        "n": 68,
+        "mae": 4.071100368992538
+      },
+      {
+        "from": "Natal (RN)",
+        "to": "Sao Paulo (SP)",
+        "flightType": "firstClass",
+        "n": 100,
+        "mae": 5.418345587326811
+      },
+      {
+        "from": "Natal (RN)",
+        "to": "Sao Paulo (SP)",
+        "flightType": "premium",
+        "n": 64,
+        "mae": 1.9734627830443987
+      },
+      {
+        "from": "Recife (PE)",
+        "to": "Aracaju (SE)",
+        "flightType": "economic",
+        "n": 211,
+        "mae": 6.78531127465798
+      },
+      {
+        "from": "Recife (PE)",
+        "to": "Aracaju (SE)",
+        "flightType": "firstClass",
+        "n": 331,
+        "mae": 8.668321661429324
+      },
+      {
+        "from": "Recife (PE)",
+        "to": "Aracaju (SE)",
+        "flightType": "premium",
+        "n": 205,
+        "mae": 3.98844591289014
+      },
+      {
+        "from": "Recife (PE)",
+        "to": "Brasilia (DF)",
+        "flightType": "economic",
+        "n": 167,
+        "mae": 7.50882065416416
+      },
+      {
+        "from": "Recife (PE)",
+        "to": "Brasilia (DF)",
+        "flightType": "firstClass",
+        "n": 254,
+        "mae": 3.546332187302604
+      },
+      {
+        "from": "Recife (PE)",
+        "to": "Brasilia (DF)",
+        "flightType": "premium",
+        "n": 158,
+        "mae": 10.777709428610088
+      },
+      {
+        "from": "Recife (PE)",
+        "to": "Campo Grande (MS)",
+        "flightType": "economic",
+        "n": 169,
+        "mae": 5.348556873206615
+      },
+      {
+        "from": "Recife (PE)",
+        "to": "Campo Grande (MS)",
+        "flightType": "firstClass",
+        "n": 278,
+        "mae": 6.321555128668209
+      },
+      {
+        "from": "Recife (PE)",
+        "to": "Campo Grande (MS)",
+        "flightType": "premium",
+        "n": 190,
+        "mae": 3.2990887707524807
+      },
+      {
+        "from": "Recife (PE)",
+        "to": "Florianopolis (SC)",
+        "flightType": "economic",
+        "n": 333,
+        "mae": 5.770374334262558
+      },
+      {
+        "from": "Recife (PE)",
+        "to": "Florianopolis (SC)",
+        "flightType": "firstClass",
+        "n": 524,
+        "mae": 3.9400166602122106
+      },
+      {
+        "from": "Recife (PE)",
+        "to": "Florianopolis (SC)",
+        "flightType": "premium",
+        "n": 358,
+        "mae": 7.102784482743062
+      },
+      {
+        "from": "Recife (PE)",
+        "to": "Natal (RN)",
+        "flightType": "economic",
+        "n": 125,
+        "mae": 8.302951333376283
+      },
+      {
+        "from": "Recife (PE)",
+        "to": "Natal (RN)",
+        "flightType": "firstClass",
+        "n": 202,
+        "mae": 9.295186918385188
+      },
+      {
+        "from": "Recife (PE)",
+        "to": "Natal (RN)",
+        "flightType": "premium",
+        "n": 131,
+        "mae": 3.392503389346632
+      },
+      {
+        "from": "Recife (PE)",
+        "to": "Rio de Janeiro (RJ)",
+        "flightType": "economic",
+        "n": 84,
+        "mae": 1.5445266307460717
+      },
+      {
+        "from": "Recife (PE)",
+        "to": "Rio de Janeiro (RJ)",
+        "flightType": "firstClass",
+        "n": 140,
+        "mae": 2.7644179787805356
+      },
+      {
+        "from": "Recife (PE)",
+        "to": "Rio de Janeiro (RJ)",
+        "flightType": "premium",
+        "n": 82,
+        "mae": 3.6537143518537145
+      },
+      {
+        "from": "Recife (PE)",
+        "to": "Salvador (BH)",
+        "flightType": "economic",
+        "n": 69,
+        "mae": 3.003997682475782
+      },
+      {
+        "from": "Recife (PE)",
+        "to": "Salvador (BH)",
+        "flightType": "firstClass",
+        "n": 133,
+        "mae": 10.077305914417359
+      },
+      {
+        "from": "Recife (PE)",
+        "to": "Salvador (BH)",
+        "flightType": "premium",
+        "n": 92,
+        "mae": 9.557260560193981
+      },
+      {
+        "from": "Recife (PE)",
+        "to": "Sao Paulo (SP)",
+        "flightType": "economic",
+        "n": 119,
+        "mae": 5.778912912014084
+      },
+      {
+        "from": "Recife (PE)",
+        "to": "Sao Paulo (SP)",
+        "flightType": "firstClass",
+        "n": 193,
+        "mae": 12.946056811286022
+      },
+      {
+        "from": "Recife (PE)",
+        "to": "Sao Paulo (SP)",
+        "flightType": "premium",
+        "n": 124,
+        "mae": 8.901598147624801
+      },
+      {
+        "from": "Rio de Janeiro (RJ)",
+        "to": "Aracaju (SE)",
+        "flightType": "economic",
+        "n": 118,
+        "mae": 3.011742152391905
+      },
+      {
+        "from": "Rio de Janeiro (RJ)",
+        "to": "Aracaju (SE)",
+        "flightType": "firstClass",
+        "n": 171,
+        "mae": 4.75165857423314
+      },
+      {
+        "from": "Rio de Janeiro (RJ)",
+        "to": "Aracaju (SE)",
+        "flightType": "premium",
+        "n": 124,
+        "mae": 2.8879588470902915
+      },
+      {
+        "from": "Rio de Janeiro (RJ)",
+        "to": "Brasilia (DF)",
+        "flightType": "economic",
+        "n": 85,
+        "mae": 1.0652026395091123
+      },
+      {
+        "from": "Rio de Janeiro (RJ)",
+        "to": "Brasilia (DF)",
+        "flightType": "firstClass",
+        "n": 117,
+        "mae": 4.484061181754239
+      },
+      {
+        "from": "Rio de Janeiro (RJ)",
+        "to": "Brasilia (DF)",
+        "flightType": "premium",
+        "n": 82,
+        "mae": 8.02774630234686
+      },
+      {
+        "from": "Rio de Janeiro (RJ)",
+        "to": "Campo Grande (MS)",
+        "flightType": "economic",
+        "n": 102,
+        "mae": 3.2952105810188375
+      },
+      {
+        "from": "Rio de Janeiro (RJ)",
+        "to": "Campo Grande (MS)",
+        "flightType": "firstClass",
+        "n": 141,
+        "mae": 2.3861908200794235
+      },
+      {
+        "from": "Rio de Janeiro (RJ)",
+        "to": "Campo Grande (MS)",
+        "flightType": "premium",
+        "n": 116,
+        "mae": 2.5798826370654444
+      },
+      {
+        "from": "Rio de Janeiro (RJ)",
+        "to": "Florianopolis (SC)",
+        "flightType": "economic",
+        "n": 250,
+        "mae": 1.9766692434765392
+      },
+      {
+        "from": "Rio de Janeiro (RJ)",
+        "to": "Florianopolis (SC)",
+        "flightType": "firstClass",
+        "n": 359,
+        "mae": 5.78381570187868
+      },
+      {
+        "from": "Rio de Janeiro (RJ)",
+        "to": "Florianopolis (SC)",
+        "flightType": "premium",
+        "n": 270,
+        "mae": 4.338276233962744
+      },
+      {
+        "from": "Rio de Janeiro (RJ)",
+        "to": "Natal (RN)",
+        "flightType": "economic",
+        "n": 41,
+        "mae": 6.3366171619202225
+      },
+      {
+        "from": "Rio de Janeiro (RJ)",
+        "to": "Natal (RN)",
+        "flightType": "firstClass",
+        "n": 58,
+        "mae": 10.195239496540227
+      },
+      {
+        "from": "Rio de Janeiro (RJ)",
+        "to": "Natal (RN)",
+        "flightType": "premium",
+        "n": 23,
+        "mae": 1.2416982446994977
+      },
+      {
+        "from": "Rio de Janeiro (RJ)",
+        "to": "Recife (PE)",
+        "flightType": "economic",
+        "n": 84,
+        "mae": 2.14912111934725
+      },
+      {
+        "from": "Rio de Janeiro (RJ)",
+        "to": "Recife (PE)",
+        "flightType": "firstClass",
+        "n": 140,
+        "mae": 1.1352078920397974
+      },
+      {
+        "from": "Rio de Janeiro (RJ)",
+        "to": "Recife (PE)",
+        "flightType": "premium",
+        "n": 82,
+        "mae": 2.5626683223260733
+      },
+      {
+        "from": "Rio de Janeiro (RJ)",
+        "to": "Sao Paulo (SP)",
+        "flightType": "economic",
+        "n": 39,
+        "mae": 5.180113814670244
+      },
+      {
+        "from": "Rio de Janeiro (RJ)",
+        "to": "Sao Paulo (SP)",
+        "flightType": "firstClass",
+        "n": 46,
+        "mae": 8.315216259388555
+      },
+      {
+        "from": "Rio de Janeiro (RJ)",
+        "to": "Sao Paulo (SP)",
+        "flightType": "premium",
+        "n": 38,
+        "mae": 4.2618620654153005
+      },
+      {
+        "from": "Salvador (BH)",
+        "to": "Aracaju (SE)",
+        "flightType": "economic",
+        "n": 131,
+        "mae": 2.238234980928668
+      },
+      {
+        "from": "Salvador (BH)",
+        "to": "Aracaju (SE)",
+        "flightType": "firstClass",
+        "n": 164,
+        "mae": 2.7449733744922593
+      },
+      {
+        "from": "Salvador (BH)",
+        "to": "Aracaju (SE)",
+        "flightType": "premium",
+        "n": 115,
+        "mae": 2.0349342039017735
+      },
+      {
+        "from": "Salvador (BH)",
+        "to": "Brasilia (DF)",
+        "flightType": "economic",
+        "n": 105,
+        "mae": 4.91102071890737
+      },
+      {
+        "from": "Salvador (BH)",
+        "to": "Brasilia (DF)",
+        "flightType": "firstClass",
+        "n": 127,
+        "mae": 1.969244648216554
+      },
+      {
+        "from": "Salvador (BH)",
+        "to": "Brasilia (DF)",
+        "flightType": "premium",
+        "n": 88,
+        "mae": 4.952077935393428
+      },
+      {
+        "from": "Salvador (BH)",
+        "to": "Campo Grande (MS)",
+        "flightType": "economic",
+        "n": 100,
+        "mae": 10.896431704407426
+      },
+      {
+        "from": "Salvador (BH)",
+        "to": "Campo Grande (MS)",
+        "flightType": "firstClass",
+        "n": 163,
+        "mae": 4.488507911082972
+      },
+      {
+        "from": "Salvador (BH)",
+        "to": "Campo Grande (MS)",
+        "flightType": "premium",
+        "n": 105,
+        "mae": 5.878529229951892
+      },
+      {
+        "from": "Salvador (BH)",
+        "to": "Florianopolis (SC)",
+        "flightType": "economic",
+        "n": 249,
+        "mae": 2.050011351529421
+      },
+      {
+        "from": "Salvador (BH)",
+        "to": "Florianopolis (SC)",
+        "flightType": "firstClass",
+        "n": 382,
+        "mae": 2.5612821176960536
+      },
+      {
+        "from": "Salvador (BH)",
+        "to": "Florianopolis (SC)",
+        "flightType": "premium",
+        "n": 292,
+        "mae": 0.8963082592578698
+      },
+      {
+        "from": "Salvador (BH)",
+        "to": "Natal (RN)",
+        "flightType": "economic",
+        "n": 26,
+        "mae": 6.1581992466248385
+      },
+      {
+        "from": "Salvador (BH)",
+        "to": "Natal (RN)",
+        "flightType": "firstClass",
+        "n": 46,
+        "mae": 6.2169844763107935
+      },
+      {
+        "from": "Salvador (BH)",
+        "to": "Natal (RN)",
+        "flightType": "premium",
+        "n": 39,
+        "mae": 2.158422011013785
+      },
+      {
+        "from": "Salvador (BH)",
+        "to": "Recife (PE)",
+        "flightType": "economic",
+        "n": 69,
+        "mae": 5.254101793156662
+      },
+      {
+        "from": "Salvador (BH)",
+        "to": "Recife (PE)",
+        "flightType": "firstClass",
+        "n": 133,
+        "mae": 12.268974880818899
+      },
+      {
+        "from": "Salvador (BH)",
+        "to": "Recife (PE)",
+        "flightType": "premium",
+        "n": 92,
+        "mae": 7.666225126686754
+      },
+      {
+        "from": "Salvador (BH)",
+        "to": "Sao Paulo (SP)",
+        "flightType": "economic",
+        "n": 33,
+        "mae": 6.373838171746735
+      },
+      {
+        "from": "Salvador (BH)",
+        "to": "Sao Paulo (SP)",
+        "flightType": "firstClass",
+        "n": 58,
+        "mae": 7.84133853719171
+      },
+      {
+        "from": "Salvador (BH)",
+        "to": "Sao Paulo (SP)",
+        "flightType": "premium",
+        "n": 33,
+        "mae": 10.533379994852993
+      },
+      {
+        "from": "Sao Paulo (SP)",
+        "to": "Aracaju (SE)",
+        "flightType": "economic",
+        "n": 182,
+        "mae": 7.3839878619974115
+      },
+      {
+        "from": "Sao Paulo (SP)",
+        "to": "Aracaju (SE)",
+        "flightType": "firstClass",
+        "n": 227,
+        "mae": 7.582223372959788
+      },
+      {
+        "from": "Sao Paulo (SP)",
+        "to": "Aracaju (SE)",
+        "flightType": "premium",
+        "n": 158,
+        "mae": 18.33386458184217
+      },
+      {
+        "from": "Sao Paulo (SP)",
+        "to": "Brasilia (DF)",
+        "flightType": "economic",
+        "n": 108,
+        "mae": 5.198234725496796
+      },
+      {
+        "from": "Sao Paulo (SP)",
+        "to": "Brasilia (DF)",
+        "flightType": "firstClass",
+        "n": 158,
+        "mae": 8.570967510074404
+      },
+      {
+        "from": "Sao Paulo (SP)",
+        "to": "Brasilia (DF)",
+        "flightType": "premium",
+        "n": 112,
+        "mae": 3.69842118628344
+      },
+      {
+        "from": "Sao Paulo (SP)",
+        "to": "Campo Grande (MS)",
+        "flightType": "economic",
+        "n": 164,
+        "mae": 2.360685995934575
+      },
+      {
+        "from": "Sao Paulo (SP)",
+        "to": "Campo Grande (MS)",
+        "flightType": "firstClass",
+        "n": 233,
+        "mae": 2.6398574416134446
+      },
+      {
+        "from": "Sao Paulo (SP)",
+        "to": "Campo Grande (MS)",
+        "flightType": "premium",
+        "n": 139,
+        "mae": 0.9260955395189214
+      },
+      {
+        "from": "Sao Paulo (SP)",
+        "to": "Florianopolis (SC)",
+        "flightType": "economic",
+        "n": 276,
+        "mae": 3.5109854378347385
+      },
+      {
+        "from": "Sao Paulo (SP)",
+        "to": "Florianopolis (SC)",
+        "flightType": "firstClass",
+        "n": 455,
+        "mae": 1.7523430877060706
+      },
+      {
+        "from": "Sao Paulo (SP)",
+        "to": "Florianopolis (SC)",
+        "flightType": "premium",
+        "n": 301,
+        "mae": 0.7499326178253047
+      },
+      {
+        "from": "Sao Paulo (SP)",
+        "to": "Natal (RN)",
+        "flightType": "economic",
+        "n": 68,
+        "mae": 11.2752792474061
+      },
+      {
+        "from": "Sao Paulo (SP)",
+        "to": "Natal (RN)",
+        "flightType": "firstClass",
+        "n": 100,
+        "mae": 3.490352425805661
+      },
+      {
+        "from": "Sao Paulo (SP)",
+        "to": "Natal (RN)",
+        "flightType": "premium",
+        "n": 64,
+        "mae": 3.5080539570099685
+      },
+      {
+        "from": "Sao Paulo (SP)",
+        "to": "Recife (PE)",
+        "flightType": "economic",
+        "n": 119,
+        "mae": 3.3441510292930685
+      },
+      {
+        "from": "Sao Paulo (SP)",
+        "to": "Recife (PE)",
+        "flightType": "firstClass",
+        "n": 193,
+        "mae": 8.418105497622749
+      },
+      {
+        "from": "Sao Paulo (SP)",
+        "to": "Recife (PE)",
+        "flightType": "premium",
+        "n": 124,
+        "mae": 14.59440628368194
+      },
+      {
+        "from": "Sao Paulo (SP)",
+        "to": "Rio de Janeiro (RJ)",
+        "flightType": "economic",
+        "n": 39,
+        "mae": 5.531209121177566
+      },
+      {
+        "from": "Sao Paulo (SP)",
+        "to": "Rio de Janeiro (RJ)",
+        "flightType": "firstClass",
+        "n": 46,
+        "mae": 4.004600460032871
+      },
+      {
+        "from": "Sao Paulo (SP)",
+        "to": "Rio de Janeiro (RJ)",
+        "flightType": "premium",
+        "n": 38,
+        "mae": 4.9142043921645495
+      },
+      {
+        "from": "Sao Paulo (SP)",
+        "to": "Salvador (BH)",
+        "flightType": "economic",
+        "n": 33,
+        "mae": 6.6540438721718
+      },
+      {
+        "from": "Sao Paulo (SP)",
+        "to": "Salvador (BH)",
+        "flightType": "firstClass",
+        "n": 58,
+        "mae": 9.197478446707798
+      },
+      {
+        "from": "Sao Paulo (SP)",
+        "to": "Salvador (BH)",
+        "flightType": "premium",
+        "n": 33,
+        "mae": 8.54744664969052
+      }
+    ],
+    "quality_gate": {
+      "passed": true,
+      "rule": "Validation RMSE at least 10% below median baseline"
+    },
+    "limitations": [
+      "Historical dataset; not live fares.",
+      "Currency is unspecified by the provided schema.",
+      "No booking lead time is available; date is used only as recorded."
+    ],
+    "data_sha256": "d223ef92841d871b26a6a148aaf755075a9bafc0856efe4f2051604768ecf64b",
+    "git_commit": "76f5ba56d08b81de5e8274b77ae996c511c78a66",
+    "working_tree_dirty": true,
+    "python_version": "3.13.12"
+  }
+}

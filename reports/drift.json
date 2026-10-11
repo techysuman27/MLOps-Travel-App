@@ -1,0 +1,32 @@
+{
+  "scope": "Historical train versus held-out period; not live traffic or predictive accuracy",
+  "split": {
+    "validation_start": "2021-07-01",
+    "test_start": "2022-02-17",
+    "train_rows": 189782,
+    "validation_rows": 40918,
+    "test_rows": 41188,
+    "purged_rows": 0
+  },
+  "features": {
+    "time": {
+      "psi": 0.0013266240390934767
+    },
+    "distance": {
+      "psi": 0.0012798944759530174
+    },
+    "from": {
+      "total_variation_distance": 0.013704857789291255
+    },
+    "to": {
+      "total_variation_distance": 0.013704857789291255
+    },
+    "flightType": {
+      "total_variation_distance": 0.007460010748806922
+    },
+    "agency": {
+      "total_variation_distance": 0.004732597885010945
+    }
+  },
+  "interpretation": "Investigate distribution changes. Accuracy requires actual outcomes and cannot be inferred from drift alone."
+}

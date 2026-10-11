@@ -1,0 +1,96 @@
+{
+  "counts": {
+    "flights": 271888,
+    "users": 1340,
+    "hotels": 40552
+  },
+  "cities": [
+    "Aracaju (SE)",
+    "Brasilia (DF)",
+    "Campo Grande (MS)",
+    "Florianopolis (SC)",
+    "Natal (RN)",
+    "Recife (PE)",
+    "Rio de Janeiro (RJ)",
+    "Salvador (BH)",
+    "Sao Paulo (SP)"
+  ],
+  "flight_types": [
+    "economic",
+    "firstClass",
+    "premium"
+  ],
+  "agencies": [
+    "CloudFy",
+    "FlyingDrops",
+    "Rainbow"
+  ],
+  "companies": [
+    "4You",
+    "Acme Factory",
+    "Monsters CYA",
+    "Umbrella LTDA",
+    "Wonka Company"
+  ],
+  "hotel_catalogue": [
+    {
+      "name": "Hotel A",
+      "place": "Florianopolis (SC)",
+      "nightly_price": 313.02,
+      "bookings": 3330
+    },
+    {
+      "name": "Hotel AF",
+      "place": "Sao Paulo (SP)",
+      "nightly_price": 139.1,
+      "bookings": 4828
+    },
+    {
+      "name": "Hotel AU",
+      "place": "Recife (PE)",
+      "nightly_price": 312.83,
+      "bookings": 4467
+    },
+    {
+      "name": "Hotel BD",
+      "place": "Natal (RN)",
+      "nightly_price": 242.88,
+      "bookings": 4829
+    },
+    {
+      "name": "Hotel BP",
+      "place": "Brasilia (DF)",
+      "nightly_price": 247.62,
+      "bookings": 4437
+    },
+    {
+      "name": "Hotel BW",
+      "place": "Campo Grande (MS)",
+      "nightly_price": 60.39,
+      "bookings": 4333
+    },
+    {
+      "name": "Hotel CB",
+      "place": "Rio de Janeiro (RJ)",
+      "nightly_price": 165.99,
+      "bookings": 5029
+    },
+    {
+      "name": "Hotel K",
+      "place": "Salvador (BH)",
+      "nightly_price": 263.41,
+      "bookings": 5094
+    },
+    {
+      "name": "Hotel Z",
+      "place": "Aracaju (SE)",
+      "nightly_price": 208.04,
+      "bookings": 4205
+    }
+  ],
+  "gender_counts": {
+    "male": 452,
+    "female": 448,
+    "none": 440
+  }
+}

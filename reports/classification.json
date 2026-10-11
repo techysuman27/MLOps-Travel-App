@@ -1,0 +1,107 @@
+{
+  "selected": "random_forest",
+  "validation_candidates": [
+    {
+      "model": "majority_baseline",
+      "accuracy": 0.3383084577114428,
+      "balanced_accuracy": 0.3333333333333333,
+      "macro_f1": 0.16852540272614622
+    },
+    {
+      "model": "logistic",
+      "accuracy": 0.3283582089552239,
+      "balanced_accuracy": 0.32886148579739455,
+      "macro_f1": 0.32172001789023064
+    },
+    {
+      "model": "random_forest",
+      "accuracy": 0.3681592039800995,
+      "balanced_accuracy": 0.36903051586984864,
+      "macro_f1": 0.36532834061438174
+    }
+  ],
+  "split": {
+    "train_rows": 938,
+    "validation_rows": 201,
+    "test_rows": 201,
+    "strategy": "stratified users; seed 42"
+  },
+  "test_metrics": {
+    "accuracy": 0.35323383084577115,
+    "balanced_accuracy": 0.3539565984693289,
+    "macro_f1": 0.35120161514898357
+  },
+  "test_baseline": {
+    "accuracy": 0.3383084577114428,
+    "balanced_accuracy": 0.3333333333333333,
+    "macro_f1": 0.16852540272614622
+  },
+  "classification_report": {
+    "female": {
+      "precision": 0.3333333333333333,
+      "recall": 0.3283582089552239,
+      "f1-score": 0.3308270676691729,
+      "support": 67.0
+    },
+    "male": {
+      "precision": 0.3508771929824561,
+      "recall": 0.29411764705882354,
+      "f1-score": 0.32,
+      "support": 68.0
+    },
+    "none": {
+      "precision": 0.3717948717948718,
+      "recall": 0.4393939393939394,
+      "f1-score": 0.4027777777777778,
+      "support": 66.0
+    },
+    "accuracy": 0.35323383084577115,
+    "macro avg": {
+      "precision": 0.3520017993702204,
+      "recall": 0.3539565984693289,
+      "f1-score": 0.35120161514898357,
+      "support": 201.0
+    },
+    "weighted avg": {
+      "precision": 0.3518977313164273,
+      "recall": 0.35323383084577115,
+      "f1-score": 0.3507897854087957,
+      "support": 201.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      22,
+      21,
+      24
+    ],
+    [
+      23,
+      20,
+      25
+    ],
+    [
+      21,
+      16,
+      29
+    ]
+  ],
+  "labels": [
+    "female",
+    "male",
+    "none"
+  ],
+  "quality_gate": {
+    "passed": true,
+    "rule": "Educational benchmark only; no business decision or identity inference"
+  },
+  "limitations": [
+    "none is an undocumented source category, not an inferred identity.",
+    "Only company and age are used; identifiers and personal names are excluded.",
+    "Limited accuracy is expected and must be reported without exaggeration."
+  ],
+  "data_sha256": "d551fa03528b1c79e090ab6c3c4fa17eeed8d7e78dcfdf1a0cf65ecb51a68a56",
+  "git_commit": "76f5ba56d08b81de5e8274b77ae996c511c78a66",
+  "working_tree_dirty": true,
+  "python_version": "3.13.12"
+}

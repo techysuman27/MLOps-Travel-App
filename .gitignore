@@ -13,3 +13,13 @@ mlartifacts/
 *.db
 .pytest_cache/
 logs/
+*.egg-info/
+build/
+dist/
+.runtime-env/
+artifacts-local/
+reports/notebook_execution/
+.streamlit/secrets.toml
+.ci-venv/
+reports/port-forward.log
+reports/release-deployment.yml

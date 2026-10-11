@@ -1,0 +1,7 @@
+FROM python:3.13-slim
+WORKDIR /app
+COPY requirements*.txt pyproject.toml ./
+COPY src ./src
+RUN pip install --no-cache-dir -r requirements-training.txt && pip install --no-cache-dir --no-deps .
+ENV PYTHONUNBUFFERED=1
+CMD ["python", "-m", "voyage.cli", "validate"]

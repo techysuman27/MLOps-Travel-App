@@ -1,0 +1,63 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.api
+    ports: ["127.0.0.1:8000:8000"]
+    restart: unless-stopped
+  ui:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.ui
+    environment:
+      API_URL: http://api:8000
+    ports: ["127.0.0.1:8501:8501"]
+    depends_on:
+      api:
+        condition: service_healthy
+  mlflow:
+    profiles: ["ops"]
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.training
+    working_dir: /tracking
+    command: ["mlflow", "server", "--host", "0.0.0.0", "--port", "5000", "--backend-store-uri", "sqlite:////tracking/mlflow.db", "--artifacts-destination", "/tracking/artifacts", "--allowed-hosts", "localhost:5000,127.0.0.1:5000,mlflow:5000"]
+    ports: ["127.0.0.1:5000:5000"]
+    volumes: ["tracking:/tracking"]
+  postgres:
+    profiles: ["ops"]
+    image: postgres:16
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: ${AIRFLOW_DB_PASSWORD:?Set AIRFLOW_DB_PASSWORD in .env}
+      POSTGRES_DB: airflow
+    volumes: ["airflow-db:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U airflow"]
+      interval: 5s
+      retries: 10
+  airflow:
+    profiles: ["ops"]
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.airflow
+    command: standalone
+    environment:
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:${AIRFLOW_DB_PASSWORD}@postgres/airflow
+      MLFLOW_TRACKING_URI: http://mlflow:5000
+    ports: ["127.0.0.1:8080:8080"]
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags:ro
+      - ./data/raw:/opt/project/data/raw:ro
+      - ./models:/opt/project/models
+      - ./reports:/opt/project/reports
+      - airflow-home:/opt/airflow
+    depends_on:
+      postgres:
+        condition: service_healthy
+volumes:
+  tracking:
+  airflow-db:
+  airflow-home:

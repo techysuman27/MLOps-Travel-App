@@ -1,0 +1,67 @@
+{
+  "selected": "hybrid_alpha_1.0",
+  "split": {
+    "validation_start": "2021-07-01",
+    "test_start": "2022-02-17",
+    "train_rows": 28285,
+    "validation_rows": 6122,
+    "test_rows": 6145,
+    "purged_rows": 0
+  },
+  "validation_candidates": [
+    {
+      "model": "hybrid_alpha_0.0",
+      "alpha": 0.0,
+      "recall_at_3": 0.3494663964876731,
+      "ndcg_at_3": 0.6354376918205402,
+      "coverage": 0.3333333333333333,
+      "evaluated_users": 705,
+      "unknown_relevant_items": 0
+    },
+    {
+      "model": "hybrid_alpha_0.5",
+      "alpha": 0.5,
+      "recall_at_3": 0.36243329956095915,
+      "ndcg_at_3": 0.648352930262019,
+      "coverage": 1.0,
+      "evaluated_users": 705,
+      "unknown_relevant_items": 0
+    },
+    {
+      "model": "hybrid_alpha_1.0",
+      "alpha": 1.0,
+      "recall_at_3": 0.3653411009793988,
+      "ndcg_at_3": 0.6530710560498729,
+      "coverage": 1.0,
+      "evaluated_users": 705,
+      "unknown_relevant_items": 0
+    }
+  ],
+  "test_metrics": {
+    "recall_at_3": 0.37828525641025645,
+    "ndcg_at_3": 0.7236217977772803,
+    "coverage": 1.0,
+    "evaluated_users": 520,
+    "unknown_relevant_items": 0
+  },
+  "test_baseline": {
+    "recall_at_3": 0.34670100732600734,
+    "ndcg_at_3": 0.6965806246817849,
+    "coverage": 0.3333333333333333,
+    "evaluated_users": 520,
+    "unknown_relevant_items": 0
+  },
+  "quality_gate": {
+    "passed": true,
+    "rule": "Select validation NDCG@3; popularity is an eligible fallback"
+  },
+  "limitations": [
+    "Nine hotels and one hotel per destination; no real-time availability.",
+    "Bookings are implicit signals, not ratings. Previously booked hotels remain eligible.",
+    "Macro per-user unique-item Recall@3 and NDCG@3; catalogue is training-period only."
+  ],
+  "data_sha256": "18b21c8e9ca406c6332b15446b2e6f1c10928df142fc70b3f3fd72abd35337d0",
+  "git_commit": "76f5ba56d08b81de5e8274b77ae996c511c78a66",
+  "working_tree_dirty": true,
+  "python_version": "3.13.12"
+}

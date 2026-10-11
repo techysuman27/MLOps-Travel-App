@@ -1,0 +1,12 @@
+# Free demonstration deployment. Account authorization is required in Render.
+services:
+  - type: web
+    name: voyage-analytics-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./docker/Dockerfile.api
+    healthCheckPath: /health/ready
+    envVars:
+      - key: PORT
+        value: '8000'
+    autoDeployTrigger: off

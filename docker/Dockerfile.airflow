@@ -1,0 +1,9 @@
+FROM apache/airflow:3.1.0-python3.12
+USER root
+RUN python -m venv /opt/voyage-venv
+COPY requirements*.txt /opt/project/
+RUN /opt/voyage-venv/bin/pip install --no-cache-dir -r /opt/project/requirements-training.txt
+COPY pyproject.toml /opt/project/
+COPY src /opt/project/src
+RUN /opt/voyage-venv/bin/pip install --no-cache-dir --no-deps /opt/project && chown -R airflow:root /opt/project
+USER airflow

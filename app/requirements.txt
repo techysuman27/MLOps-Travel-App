@@ -1,0 +1,4 @@
+# Streamlit Community Cloud detects requirements beside the entry point.
+streamlit==1.65.0
+pandas==3.0.1
+requests==2.34.2

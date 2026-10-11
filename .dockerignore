@@ -1,0 +1,14 @@
+.git
+.venv
+.runtime-env
+__pycache__
+*.egg-info
+data
+templates
+mlruns
+mlartifacts
+*.db
+logs
+.env
+.env.*
+docs/reference_review.md
