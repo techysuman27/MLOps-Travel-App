@@ -1,0 +1,98 @@
+{
+  "users": {
+    "rows": 1340,
+    "columns": [
+      "code",
+      "company",
+      "name",
+      "gender",
+      "age"
+    ],
+    "missing_values": {
+      "code": 0,
+      "company": 0,
+      "name": 0,
+      "gender": 0,
+      "age": 0
+    },
+    "duplicate_rows": 0,
+    "gender_counts": {
+      "male": 452,
+      "female": 448,
+      "none": 440
+    }
+  },
+  "flights": {
+    "rows": 271888,
+    "columns": [
+      "travelCode",
+      "userCode",
+      "from",
+      "to",
+      "flightType",
+      "price",
+      "time",
+      "distance",
+      "agency",
+      "date"
+    ],
+    "missing_values": {
+      "travelCode": 0,
+      "userCode": 0,
+      "from": 0,
+      "to": 0,
+      "flightType": 0,
+      "price": 0,
+      "time": 0,
+      "distance": 0,
+      "agency": 0,
+      "date": 0
+    },
+    "duplicate_rows": 0,
+    "date_range": [
+      "2019-09-26",
+      "2023-07-24"
+    ]
+  },
+  "hotels": {
+    "rows": 40552,
+    "columns": [
+      "travelCode",
+      "userCode",
+      "name",
+      "place",
+      "days",
+      "price",
+      "total",
+      "date"
+    ],
+    "missing_values": {
+      "travelCode": 0,
+      "userCode": 0,
+      "name": 0,
+      "place": 0,
+      "days": 0,
+      "price": 0,
+      "total": 0,
+      "date": 0
+    },
+    "duplicate_rows": 0,
+    "date_range": [
+      "2019-09-26",
+      "2023-07-13"
+    ],
+    "unique_hotels": 9,
+    "unique_places": 9
+  },
+  "relationships": {
+    "flights_unknown_users": 0,
+    "hotels_unknown_users": 0,
+    "flight_rows_per_travel_user": {
+      "2": 135944
+    },
+    "hotel_rows_per_travel_user": {
+      "1": 40552
+    },
+    "hotel_trips_missing_flights": 0
+  }
+}

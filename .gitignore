@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+!.env.example
+.ipynb_checkpoints/
+data/raw/*
+data/*.zip
+templates/folder.html
+mlruns/
+mlartifacts/
+*.db
+.pytest_cache/
+logs/
