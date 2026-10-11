@@ -3,10 +3,13 @@
 An individual AlmaBetter **Productionization of ML Systems** capstone by **techysuman27**. The application estimates historical flight prices, recommends hotel/destination options, and includes an educational classification benchmark. Shared model code connects three assessed notebooks to a Flask API, Streamlit UI and repeatable MLOps workflows.
 
 **Repository:** https://github.com/techysuman27/MLOps-Travel-App  
-**Public demo:** deployment pending account connection; no public URL is claimed yet.  
+**Public demo:** [Open Voyage Analytics](https://voyage-analytics-suman.streamlit.app/)  
+**Public API:** [Readiness status](https://voyage-analytics-api-kqju.onrender.com/health/ready)  
 **Verification status:** [evidence ledger](docs/verification.md).
 
-![Flight estimate from the running local application](docs/evidence/flight-estimate.jpg)
+The free API can take about a minute to wake after inactivity. The public app serves predictions; Kubernetes and workflow services are demonstrated locally. Consult the verification ledger for completed runtime checks.
+
+![Flight estimate from the public application](docs/evidence/public-flight-estimate.jpg)
 
 ## Measured results
 

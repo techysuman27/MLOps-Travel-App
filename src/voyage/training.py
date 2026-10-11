@@ -149,7 +149,8 @@ def run_training(task, data_dir='data/raw', model_dir='models', reports_dir='rep
             if 'date' in example:
                 example['date'] = example.date.dt.strftime('%Y-%m-%d')
             mlflow.sklearn.log_model(model['pipeline'], name='pipeline', input_example=example,
-                                    serialization_format='cloudpickle', code_paths=['src/voyage'])
+                                    serialization_format='cloudpickle', code_paths=['src/voyage'],
+                                    registered_model_name=f'voyage-{task}' if report['quality_gate']['passed'] else None)
         manifest = save_bundle(task, model, report, run.info.run_id, model_dir)
         mlflow.log_artifact(str(Path(model_dir) / manifest['artifact']), artifact_path='bundle')
         mlflow.log_dict(report, 'evaluation.json')

@@ -12,3 +12,7 @@ logs
 .env
 .env.*
 docs/reference_review.md
+artifacts-local
+.streamlit/secrets.toml
+.ci-venv
+reports/notebook_execution

@@ -20,7 +20,7 @@ st.sidebar.caption('AlmaBetter • Productionization of ML Systems\n\nHistorical
 
 
 def get(path):
-    response = requests.get(API + path, timeout=15)
+    response = requests.get(API + path, timeout=(10, 90))
     response.raise_for_status()
     return response.json()
 
@@ -39,10 +39,13 @@ def post(path, data):
 
 
 try:
-    catalogue = get('/api/v1/catalogue')
-    info = get('/api/v1/model-info')
+    with st.spinner('Connecting to the prediction service. The free demo may take about a minute to wake up.'):
+        catalogue = get('/api/v1/catalogue')
+        info = get('/api/v1/model-info')
 except (requests.RequestException, ValueError):
     st.warning('The prediction service is starting or unavailable. Refresh once it is ready.')
+    if st.button('Try connecting again'):
+        st.rerun()
     st.stop()
 
 if page == 'Flight estimator':

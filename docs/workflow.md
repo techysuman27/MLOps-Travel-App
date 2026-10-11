@@ -26,7 +26,11 @@ Liveness means the process can respond. Readiness means all required models load
 
 The interface calls the Flask API rather than training models or duplicating preprocessing. The flight estimator accepts journey details and displays an estimate with its limitations. The hotel explorer supports historical booking preferences and budget filters. The insights page displays measured model results. The classification lab clearly labels its weak predictive value and source-category semantics.
 
-![Actual local flight estimate](evidence/flight-estimate.jpg)
+The public application is https://voyage-analytics-suman.streamlit.app/ and calls the Render-hosted API. Public readiness, flight prediction, invalid-request handling and hotel recommendations passed the deployment smoke checks on 2026-10-11.
+
+![Actual public flight estimate](evidence/public-flight-estimate.jpg)
+
+![Actual public hotel suggestions](evidence/public-hotels.jpg)
 
 The hotel dataset contains one hotel per destination. Therefore the UI distinguishes broad catalogue ranking from a destination-filtered lookup and never claims real-time room availability.
 
@@ -34,13 +38,13 @@ The hotel dataset contains one hotel per destination. Therefore the UI distingui
 
 Separate images package the API and UI. The API uses a production WSGI server, a non-root user and an HTTP readiness check. Model bundles are included with the release so every replica receives the same approved artifacts. The runtime dependency list must include dependencies used by serialized data objects, not just imports visible in the API file.
 
-**Evidence pending:** healthy container state and successful prediction from the rebuilt API image. Do not replace this with a screenshot of a Dockerfile.
+The rebuilt API image passed readiness, valid flight prediction, invalid-input HTTP 400 and hotel recommendation checks. The initial missing `pyarrow` dependency was fixed and the same runtime requirements deployed successfully to Render. A dedicated container-state screenshot remains pending.
 
 ## 5. Kubernetes deployment and scaling
 
 The Deployment starts two API replicas. A Service directs requests to ready pods. Startup probes allow model initialization; readiness prevents routing to unavailable models; liveness detects an unresponsive process. Resource requests/limits make scheduling and capacity explicit. Rollout history supports reverting to a previous release.
 
-**Evidence pending:** ready pods, Service prediction, scaling from two to three replicas and bounded load-test results. The optional HPA requires metrics-server and separate observed scaling evidence. Manual scaling must not be described as automatic scaling.
+The local kind deployment rolled out with two ready replicas, passed API smoke checks, then scaled manually to three ready replicas. Captured output is in `evidence/kubernetes-rollout.txt`. A bounded test completed 200/200 predictions using eight concurrent workers (p50 693 ms, p95 1183 ms). It used a local port-forward to one selected pod, so it does not prove load balancing or a throughput increase. The optional HPA still requires metrics-server and observed automatic scaling evidence. Manual scaling is not automatic scaling.
 
 ## 6. Scheduling with Airflow
 

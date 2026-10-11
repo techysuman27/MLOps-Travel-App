@@ -10,7 +10,7 @@ pipeline {
   stages {
     stage('Checkout') { steps { checkout scm } }
     stage('Dependencies') {
-      steps { sh 'python3 -m venv .ci-venv && .ci-venv/bin/pip install -r requirements.txt && .ci-venv/bin/pip install --no-deps .' }
+      steps { sh 'python3 -m venv .ci-venv && .ci-venv/bin/pip install -r requirements-ci.txt && .ci-venv/bin/pip install --no-deps .' }
     }
     stage('Tests') {
       steps { sh '.ci-venv/bin/python -m pytest -q --junitxml=reports/tests.xml' }
@@ -26,12 +26,12 @@ pipeline {
       steps {
         sh '''
           set -eu
-          container=$(docker run -d -p 127.0.0.1::8000 "$IMAGE_REPOSITORY:$RELEASE_TAG")
+          container=$(docker run -d "$IMAGE_REPOSITORY:$RELEASE_TAG")
           trap 'docker rm -f "$container"' EXIT
-          port=$(docker port "$container" 8000/tcp | sed 's/.*://')
-          export SMOKE_URL="http://127.0.0.1:$port"
-          .ci-venv/bin/python scripts/wait_ready.py --url "$SMOKE_URL"
-          .ci-venv/bin/python scripts/smoke_test.py --url "$SMOKE_URL"
+          docker cp scripts/wait_ready.py "$container:/tmp/wait_ready.py"
+          docker cp scripts/smoke_test.py "$container:/tmp/smoke_test.py"
+          docker exec "$container" python /tmp/wait_ready.py --url http://127.0.0.1:8000
+          docker exec "$container" python /tmp/smoke_test.py --url http://127.0.0.1:8000
         '''
       }
     }

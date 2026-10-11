@@ -1,0 +1,13 @@
+# Dedicated local demonstration controller; run only trusted project pipelines.
+FROM python:3.13-slim AS python
+FROM docker:29-cli AS dockercli
+FROM jenkins/jenkins:lts-jdk21
+USER root
+COPY --from=python /usr/local /usr/local
+COPY --from=dockercli /usr/local/bin/docker /usr/local/bin/docker
+RUN apt-get update && apt-get install -y --no-install-recommends libgomp1 libsqlite3-0 libbz2-1.0 liblzma5 libffi8 \
+    && rm -rf /var/lib/apt/lists/*
+RUN python3 --version && docker --version
+USER jenkins
+RUN jenkins-plugin-cli --plugins workflow-aggregator git junit timestamper pipeline-stage-view
+COPY jenkins/init.groovy.d /usr/share/jenkins/ref/init.groovy.d

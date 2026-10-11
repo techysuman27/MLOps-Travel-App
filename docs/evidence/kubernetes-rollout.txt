@@ -1,0 +1,10 @@
+NAME                         READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS   IMAGES             SELECTOR
+deployment.apps/voyage-api   3/3     3            3           3m36s   api          voyage-api:local   app=voyage-api
+
+NAME                             READY   STATUS    RESTARTS   AGE     IP           NODE                   NOMINATED NODE   READINESS GATES
+pod/voyage-api-f988c6bc5-b5vwq   1/1     Running   0          91s     10.244.0.7   voyage-control-plane   <none>           <none>
+pod/voyage-api-f988c6bc5-d2g72   1/1     Running   0          3m35s   10.244.0.5   voyage-control-plane   <none>           <none>
+pod/voyage-api-f988c6bc5-dtx8q   1/1     Running   0          3m35s   10.244.0.6   voyage-control-plane   <none>           <none>
+
+NAME                 TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE     SELECTOR
+service/voyage-api   ClusterIP   10.96.128.187   <none>        80/TCP    3m37s   app=voyage-api
