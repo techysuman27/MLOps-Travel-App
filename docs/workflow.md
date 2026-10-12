@@ -4,7 +4,7 @@
 **Course:** AlmaBetter, Productionization of ML Systems  
 **Repository:** https://github.com/techysuman27/MLOps-Travel-App
 
-This is the source narrative for the separate Google Docs submission. It intentionally omits tool installation instructions. Screenshots must show our actual successful executions; pending stages below must be completed before final submission.
+This report explains the implemented workflow and distinguishes verified execution from optional deployment capabilities. Screenshots show this project's actual application, tracking interface and captured execution results.
 
 ## 1. Modeling and release preparation
 
@@ -20,7 +20,7 @@ The Flask application loads approved artifacts at startup. Clients send a JSON f
 
 Liveness means the process can respond. Readiness means all required models loaded successfully. We tested a valid prediction, an invalid request returning HTTP 400, and missing-model readiness returning HTTP 503. The first Docker check caught a missing artifact dependency, demonstrating why readiness matters.
 
-**Evidence:** flight-estimate.jpg shows the user-facing result of the API request. A dedicated API response screenshot remains to be captured.
+The captured deployment report below includes an actual public API response with its prediction and model version. The full JSON is retained in the repository alongside the screenshot.
 
 ## 3. Streamlit application
 
@@ -38,7 +38,7 @@ The hotel dataset contains one hotel per destination. Therefore the UI distingui
 
 Separate images package the API and UI. The API uses a production WSGI server, a non-root user and an HTTP readiness check. Model bundles are included with the release so every replica receives the same approved artifacts. The runtime dependency list must include dependencies used by serialized data objects, not just imports visible in the API file.
 
-The rebuilt API image passed readiness, valid flight prediction, invalid-input HTTP 400 and hotel recommendation checks. The initial missing `pyarrow` dependency was fixed and the same runtime requirements deployed successfully to Render. A dedicated container-state screenshot remains pending.
+The rebuilt API image passed readiness, valid flight prediction, invalid-input HTTP 400 and hotel recommendation checks. The initial missing `pyarrow` dependency was fixed and the same runtime requirements deployed successfully to Render.
 
 ## 5. Kubernetes deployment and scaling
 
@@ -46,17 +46,27 @@ The Deployment starts two API replicas. A Service directs requests to ready pods
 
 The local kind deployment rolled out with two ready replicas, passed API smoke checks, then scaled manually to three ready replicas. Captured output is in `evidence/kubernetes-rollout.txt`. A bounded test completed 200/200 predictions using eight concurrent workers (p50 693 ms, p95 1183 ms). It used a local port-forward to one selected pod, so it does not prove load balancing or a throughput increase. The optional HPA still requires metrics-server and observed automatic scaling evidence. Manual scaling is not automatic scaling.
 
+![Captured API response, Docker status and Kubernetes rollout output; this is an evidence report, not a live dashboard](evidence/deployment-evidence.jpg)
+
 ## 6. Scheduling with Airflow
 
 The regression DAG validates the source, trains and evaluates candidates, and approves only candidates that pass the gate. Code runs inside tasks, not during DAG parsing. The schedule is weekly, 02:00 UTC on Sundays; catch-up is disabled. Each run writes to a distinct candidate folder. Source data is fixed, so this demonstrates reproducible orchestration rather than a live travel feed.
 
-**Evidence pending:** DAG graph, successful task instances and candidate output. The live service is not overwritten by this DAG; a release handoff is deliberate.
+The manual demonstration run completed all three tasks successfully on 12 October 2026, between 09:57:40 and 10:00:00 IST. The resulting approved candidate is version d00a28571d5e43dca6301d5df6815ab6. An earlier scheduled attempt failed because MLflow resolved a relative source-code path from Airflow's temporary working directory. The fix resolves the installed package path absolutely and gives each task an explicit project working directory. Failed history is retained. The weekly schedule is configured; the successful run shown here was triggered manually.
+
+![Airflow graph showing source validation, training and candidate approval all successful](evidence/airflow-success.jpg)
+
+The live service is not overwritten by this DAG; the candidate remains isolated until a reviewed release. The workflow demonstration uses a separate container-hosted MLflow store from the original modeling experiments.
 
 ## 7. CI/CD with Jenkins
 
-The pipeline checks out source, installs dependencies, executes real tests, builds an image and starts that image to verify a prediction. Explicit parameters control publishing and Kubernetes deployment. Registry and cluster credentials are stored in Jenkins, not in source files. Deployment uses a registry digest and verifies rollout and inference.
+The pipeline checks out source, prepares the test environment, executes real tests, builds an image and starts that image to verify a prediction. Explicit parameters control local deployment, registry publishing and Kubernetes deployment. The optional registry/cluster stages expect Jenkins credentials; those credentials have not been configured for this local demonstration. The Kubernetes release stage is designed to use a registry digest and verify rollout and inference.
 
-**Evidence pending:** a Jenkins build completing the applicable stages. The Jenkinsfile by itself is implementation evidence only. The initial Airflow-to-release handoff is manual selection of an approved candidate; automatic triggering is future work.
+Jenkins build 2 succeeded at commit 60049c2: 13 tests passed, Docker build completed, and readiness, prediction, invalid-input and recommendation checks passed against the resulting container. Registry publishing and Kubernetes deployment were explicitly skipped in that run. The initial Airflow-to-release handoff is manual selection of an approved candidate; automatic triggering is future work.
+
+Build 3 then succeeded at commit a6c36ef with local deployment enabled. It ran the tests, built the release image, verified the container and deployed a persistent API on localhost:18081. The release passed readiness, flight prediction, invalid-input and recommendation checks. The deployment script preserves the previous local container until the replacement passes; restoration on a failed release is implemented but has not been fault-injected in this demonstration. This verifies Jenkins CI and local CD. Registry publishing and Kubernetes CD remain configured options, not executed stages.
+
+![Successful Jenkins build with archived model reports and no test failures](evidence/jenkins-success.jpg)
 
 ## 8. MLflow tracking and monitoring
 
@@ -64,10 +74,10 @@ MLflow contains separate experiments for flights, classification and hotels, wit
 
 Request logs record latency, status and request ID. The historical drift report compares feature distributions between training and held-out periods. Drift is not predictive error; accuracy monitoring needs actual subsequent outcomes.
 
-**Evidence pending:** MLflow experiment comparison screenshot and operational report screenshots.
+![Actual MLflow flight run with held-out metrics and registered model version](evidence/mlflow-flight-run.jpg)
 
 ## 9. Limitations and next steps
 
 The classification task has approximately 35% holdout accuracy and is an educational benchmark. The recommendation improvement over popularity is modest and does not prove satisfaction uplift. Public free hosting has cold starts and does not provide a production reliability guarantee. Newer data, clearer field semantics, outcome feedback and a richer hotel catalogue are prerequisites for credible business deployment.
 
-Use verification.md as the final evidence checklist. Upload this narrative, with completed screenshots, to a separate viewable Google Doc as required by the course.
+The repository's verification ledger records the scope of each executed check. The student records the regression lifecycle presentation using the accompanying walkthrough; no video recording is included in this report.

@@ -1,0 +1,6 @@
+dag_id                      | logical_date              | task_id                    | state   | start_date                       | end_date                        
+============================+===========================+============================+=========+==================================+=================================
+voyage_regression_lifecycle | 2026-10-11T19:35:00+00:00 | validate_source            | success | 2026-10-12T04:27:42.160040+00:00 | 2026-10-12T04:28:06.832374+00:00
+voyage_regression_lifecycle | 2026-10-11T19:35:00+00:00 | train_compare_and_evaluate | success | 2026-10-12T04:28:08.184806+00:00 | 2026-10-12T04:29:55.038336+00:00
+voyage_regression_lifecycle | 2026-10-11T19:35:00+00:00 | gate_and_approve_candidate | success | 2026-10-12T04:29:56.921754+00:00 | 2026-10-12T04:30:00.173828+00:00
+                                                                                                                                                                    

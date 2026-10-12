@@ -2,12 +2,13 @@
 import json
 from pathlib import Path
 import textwrap
+from notebook_notes import CHART_NOTES
 
 REPO = 'https://github.com/techysuman27/MLOps-Travel-App'
 
 
 def markdown(text):
-    return {'cell_type': 'markdown', 'metadata': {}, 'source': textwrap.dedent(text).strip().splitlines(True)}
+    return {'cell_type': 'markdown', 'metadata': {}, 'source': '\n'.join(line.lstrip() for line in text.strip().splitlines()).splitlines(True)}
 
 
 def code(text):
@@ -32,7 +33,7 @@ def build(task, spec):
     cells = [markdown(f'''# Voyage Analytics — {title}
     **Project type:** {project_type}  
     **Contribution:** Individual  
-    **Author:** techysuman27 (replace with your preferred submission name if needed)
+    **Author:** techysuman27
 
     # Project Summary
     {summary}
@@ -115,7 +116,7 @@ def build(task, spec):
     '''), markdown('## 4. Data Visualization, Storytelling and Experimenting with Charts')]
     for i in range(15):
         cells.extend([markdown(f'''### Chart {i+1}
-        **Why this chart?** {'A distribution, group comparison or relationship plot exposes the support and variation relevant to this task. Counts and proportions help distinguish common patterns from thinly represented cases.'}
+        **Why this chart?** {CHART_NOTES[task][i][0]}
         '''), code(f'''
         figure, observed_insight = draw_chart(TASK, {i}, eda)
         image_buffer = BytesIO()
@@ -123,7 +124,7 @@ def build(task, spec):
         display(Image(data=image_buffer.getvalue()))
         plt.close(figure)
         print('Observed insight:', observed_insight)
-        '''), markdown('''**Business implication:** Use the measured observation to guide feature checks, coverage limits and evaluation slices. It can support budgeting or catalogue exploration, but it is not proof of a causal effect or increased business revenue. Sparse groups and historical patterns can produce poor generalization; the independent holdout checks this separately.
+        '''), markdown(f'''**Business implication:** {CHART_NOTES[task][i][1]}
         ''')])
     cells.append(markdown('''## 5. Hypothesis Testing
     These are exploratory checks on training data only, using three comparisons and a Bonferroni significance level of 0.05/3. Statistical association does not establish practical predictive value. Flight/hotel records repeat users and trips, so the tests use one observation per user to reduce within-user dependence; remaining observational confounding limits interpretation.

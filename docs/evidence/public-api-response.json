@@ -1,0 +1,10 @@
+{
+  "model_version": "dac3c974d6ea4aeb9d8ca90bec6a0318",
+  "predicted_price": 1429.4,
+  "request_id": "fab89aaa5111412480b2e90c79d5a842",
+  "units": "dataset currency units",
+  "warnings": [
+    "Historical estimate in dataset currency units; not a live fare quote.",
+    "Date is beyond the training period; current market accuracy is unverified."
+  ]
+}

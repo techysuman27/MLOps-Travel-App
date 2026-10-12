@@ -1,0 +1,266 @@
+Started by user voyage-admin
+Checking out git https://github.com/techysuman27/MLOps-Travel-App.git into /var/jenkins_home/workspace/Voyage-Travel-CI@script/9beb4f67d0e39b55ef57d7219c9001874a5c54523e6545baba864df5ab1eaeca to read Jenkinsfile
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/Voyage-Travel-CI@script/9beb4f67d0e39b55ef57d7219c9001874a5c54523e6545baba864df5ab1eaeca/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/techysuman27/MLOps-Travel-App.git # timeout=10
+Fetching upstream changes from https://github.com/techysuman27/MLOps-Travel-App.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+ > git fetch --tags --force --progress -- https://github.com/techysuman27/MLOps-Travel-App.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision a6c36ef01321581c5551235fed3146cf21b5f6d6 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f a6c36ef01321581c5551235fed3146cf21b5f6d6 # timeout=10
+Commit message: "fix: make scheduled training portable and verify local Jenkins deployment"
+ > git rev-list --no-walk 60049c2e4f9eacab34b88414008d2b11029af3fa # timeout=10
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/Voyage-Travel-CI
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/Voyage-Travel-CI/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/techysuman27/MLOps-Travel-App.git # timeout=10
+Fetching upstream changes from https://github.com/techysuman27/MLOps-Travel-App.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+ > git fetch --tags --force --progress -- https://github.com/techysuman27/MLOps-Travel-App.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision a6c36ef01321581c5551235fed3146cf21b5f6d6 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f a6c36ef01321581c5551235fed3146cf21b5f6d6 # timeout=10
+Commit message: "fix: make scheduled training portable and verify local Jenkins deployment"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] timestamps
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] checkout
+[2026-10-12T04:30:19.676Z] The recommended git tool is: NONE
+[2026-10-12T04:30:19.678Z] No credentials specified
+[2026-10-12T04:30:19.680Z]  > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/Voyage-Travel-CI/.git # timeout=10
+[2026-10-12T04:30:19.694Z] Fetching changes from the remote Git repository
+[2026-10-12T04:30:19.697Z]  > git config remote.origin.url https://github.com/techysuman27/MLOps-Travel-App.git # timeout=10
+[2026-10-12T04:30:19.714Z] Fetching upstream changes from https://github.com/techysuman27/MLOps-Travel-App.git
+[2026-10-12T04:30:19.714Z]  > git --version # timeout=10
+[2026-10-12T04:30:19.728Z]  > git --version # 'git version 2.47.3'
+[2026-10-12T04:30:19.730Z]  > git fetch --tags --force --progress -- https://github.com/techysuman27/MLOps-Travel-App.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+[2026-10-12T04:30:20.950Z]  > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+[2026-10-12T04:30:20.960Z] Checking out Revision a6c36ef01321581c5551235fed3146cf21b5f6d6 (refs/remotes/origin/main)
+[2026-10-12T04:30:20.960Z]  > git config core.sparsecheckout # timeout=10
+[2026-10-12T04:30:20.973Z]  > git checkout -f a6c36ef01321581c5551235fed3146cf21b5f6d6 # timeout=10
+[2026-10-12T04:30:21.004Z] Commit message: "fix: make scheduled training portable and verify local Jenkins deployment"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Dependencies)
+[Pipeline] sh
+[2026-10-12T04:30:21.899Z] + python3 -m venv .ci-venv
+[2026-10-12T04:30:31.829Z] + .ci-venv/bin/pip install -r requirements-ci.txt
+[2026-10-12T04:30:33.729Z] Requirement already satisfied: numpy==2.3.5 in ./.ci-venv/lib/python3.13/site-packages (from -r /var/jenkins_home/workspace/Voyage-Travel-CI/requirements-runtime.txt (line 1)) (2.3.5)
+[2026-10-12T04:30:33.730Z] Requirement already satisfied: pandas==3.0.1 in ./.ci-venv/lib/python3.13/site-packages (from -r /var/jenkins_home/workspace/Voyage-Travel-CI/requirements-runtime.txt (line 2)) (3.0.1)
+[2026-10-12T04:30:33.730Z] Requirement already satisfied: scipy==1.16.3 in ./.ci-venv/lib/python3.13/site-packages (from -r /var/jenkins_home/workspace/Voyage-Travel-CI/requirements-runtime.txt (line 3)) (1.16.3)
+[2026-10-12T04:30:33.730Z] Requirement already satisfied: scikit-learn==1.7.2 in ./.ci-venv/lib/python3.13/site-packages (from -r /var/jenkins_home/workspace/Voyage-Travel-CI/requirements-runtime.txt (line 4)) (1.7.2)
+[2026-10-12T04:30:33.730Z] Requirement already satisfied: joblib==1.6.0 in ./.ci-venv/lib/python3.13/site-packages (from -r /var/jenkins_home/workspace/Voyage-Travel-CI/requirements-runtime.txt (line 5)) (1.6.0)
+[2026-10-12T04:30:33.730Z] Requirement already satisfied: pyarrow==25.0.1 in ./.ci-venv/lib/python3.13/site-packages (from -r /var/jenkins_home/workspace/Voyage-Travel-CI/requirements-runtime.txt (line 6)) (25.0.1)
+[2026-10-12T04:30:33.730Z] Requirement already satisfied: flask==3.1.3 in ./.ci-venv/lib/python3.13/site-packages (from -r /var/jenkins_home/workspace/Voyage-Travel-CI/requirements-runtime.txt (line 7)) (3.1.3)
+[2026-10-12T04:30:33.730Z] Requirement already satisfied: waitress==3.0.2 in ./.ci-venv/lib/python3.13/site-packages (from -r /var/jenkins_home/workspace/Voyage-Travel-CI/requirements-runtime.txt (line 8)) (3.0.2)
+[2026-10-12T04:30:33.730Z] Requirement already satisfied: requests==2.34.2 in ./.ci-venv/lib/python3.13/site-packages (from -r /var/jenkins_home/workspace/Voyage-Travel-CI/requirements-runtime.txt (line 9)) (2.34.2)
+[2026-10-12T04:30:33.730Z] Requirement already satisfied: pytest==9.1.1 in ./.ci-venv/lib/python3.13/site-packages (from -r requirements-ci.txt (line 2)) (9.1.1)
+[2026-10-12T04:30:33.730Z] Requirement already satisfied: pyyaml==6.0.3 in ./.ci-venv/lib/python3.13/site-packages (from -r requirements-ci.txt (line 3)) (6.0.3)
+[2026-10-12T04:30:33.730Z] Requirement already satisfied: python-dateutil>=2.8.2 in ./.ci-venv/lib/python3.13/site-packages (from pandas==3.0.1->-r /var/jenkins_home/workspace/Voyage-Travel-CI/requirements-runtime.txt (line 2)) (2.9.0.post0)
+[2026-10-12T04:30:33.730Z] Requirement already satisfied: threadpoolctl>=3.1.0 in ./.ci-venv/lib/python3.13/site-packages (from scikit-learn==1.7.2->-r /var/jenkins_home/workspace/Voyage-Travel-CI/requirements-runtime.txt (line 4)) (3.7.0)
+[2026-10-12T04:30:33.730Z] Requirement already satisfied: cloudpickle>=3.0 in ./.ci-venv/lib/python3.13/site-packages (from joblib==1.6.0->-r /var/jenkins_home/workspace/Voyage-Travel-CI/requirements-runtime.txt (line 5)) (3.1.2)
+[2026-10-12T04:30:33.730Z] Requirement already satisfied: blinker>=1.9.0 in ./.ci-venv/lib/python3.13/site-packages (from flask==3.1.3->-r /var/jenkins_home/workspace/Voyage-Travel-CI/requirements-runtime.txt (line 7)) (1.9.0)
+[2026-10-12T04:30:33.730Z] Requirement already satisfied: click>=8.1.3 in ./.ci-venv/lib/python3.13/site-packages (from flask==3.1.3->-r /var/jenkins_home/workspace/Voyage-Travel-CI/requirements-runtime.txt (line 7)) (8.5.0)
+[2026-10-12T04:30:33.730Z] Requirement already satisfied: itsdangerous>=2.2.0 in ./.ci-venv/lib/python3.13/site-packages (from flask==3.1.3->-r /var/jenkins_home/workspace/Voyage-Travel-CI/requirements-runtime.txt (line 7)) (2.2.0)
+[2026-10-12T04:30:33.730Z] Requirement already satisfied: jinja2>=3.1.2 in ./.ci-venv/lib/python3.13/site-packages (from flask==3.1.3->-r /var/jenkins_home/workspace/Voyage-Travel-CI/requirements-runtime.txt (line 7)) (3.1.6)
+[2026-10-12T04:30:33.730Z] Requirement already satisfied: markupsafe>=2.1.1 in ./.ci-venv/lib/python3.13/site-packages (from flask==3.1.3->-r /var/jenkins_home/workspace/Voyage-Travel-CI/requirements-runtime.txt (line 7)) (3.0.4)
+[2026-10-12T04:30:33.730Z] Requirement already satisfied: werkzeug>=3.1.0 in ./.ci-venv/lib/python3.13/site-packages (from flask==3.1.3->-r /var/jenkins_home/workspace/Voyage-Travel-CI/requirements-runtime.txt (line 7)) (3.1.9)
+[2026-10-12T04:30:33.730Z] Requirement already satisfied: charset_normalizer<4,>=2 in ./.ci-venv/lib/python3.13/site-packages (from requests==2.34.2->-r /var/jenkins_home/workspace/Voyage-Travel-CI/requirements-runtime.txt (line 9)) (3.5.2)
+[2026-10-12T04:30:33.731Z] Requirement already satisfied: idna<4,>=2.5 in ./.ci-venv/lib/python3.13/site-packages (from requests==2.34.2->-r /var/jenkins_home/workspace/Voyage-Travel-CI/requirements-runtime.txt (line 9)) (3.20)
+[2026-10-12T04:30:33.731Z] Requirement already satisfied: urllib3<3,>=1.26 in ./.ci-venv/lib/python3.13/site-packages (from requests==2.34.2->-r /var/jenkins_home/workspace/Voyage-Travel-CI/requirements-runtime.txt (line 9)) (2.8.0)
+[2026-10-12T04:30:33.731Z] Requirement already satisfied: certifi>=2023.5.7 in ./.ci-venv/lib/python3.13/site-packages (from requests==2.34.2->-r /var/jenkins_home/workspace/Voyage-Travel-CI/requirements-runtime.txt (line 9)) (2026.7.22)
+[2026-10-12T04:30:33.731Z] Requirement already satisfied: iniconfig>=1.0.1 in ./.ci-venv/lib/python3.13/site-packages (from pytest==9.1.1->-r requirements-ci.txt (line 2)) (2.3.1)
+[2026-10-12T04:30:33.731Z] Requirement already satisfied: packaging>=22 in ./.ci-venv/lib/python3.13/site-packages (from pytest==9.1.1->-r requirements-ci.txt (line 2)) (26.3)
+[2026-10-12T04:30:33.984Z] Requirement already satisfied: pluggy<2,>=1.5 in ./.ci-venv/lib/python3.13/site-packages (from pytest==9.1.1->-r requirements-ci.txt (line 2)) (1.6.0)
+[2026-10-12T04:30:33.985Z] Requirement already satisfied: pygments>=2.7.2 in ./.ci-venv/lib/python3.13/site-packages (from pytest==9.1.1->-r requirements-ci.txt (line 2)) (2.21.0)
+[2026-10-12T04:30:33.985Z] Requirement already satisfied: six>=1.5 in ./.ci-venv/lib/python3.13/site-packages (from python-dateutil>=2.8.2->pandas==3.0.1->-r /var/jenkins_home/workspace/Voyage-Travel-CI/requirements-runtime.txt (line 2)) (1.17.0)
+[2026-10-12T04:30:34.236Z] + .ci-venv/bin/pip install --no-deps .
+[2026-10-12T04:30:36.102Z] Processing ./.
+[2026-10-12T04:30:36.103Z]   Installing build dependencies: started
+[2026-10-12T04:30:39.338Z]   Installing build dependencies: finished with status 'done'
+[2026-10-12T04:30:39.339Z]   Getting requirements to build wheel: started
+[2026-10-12T04:30:43.482Z]   Getting requirements to build wheel: finished with status 'done'
+[2026-10-12T04:30:43.482Z]   Preparing metadata (pyproject.toml): started
+[2026-10-12T04:30:46.730Z]   Preparing metadata (pyproject.toml): finished with status 'done'
+[2026-10-12T04:30:46.731Z] Building wheels for collected packages: voyage-analytics
+[2026-10-12T04:30:46.738Z]   Building wheel for voyage-analytics (pyproject.toml): started
+[2026-10-12T04:30:49.232Z]   Building wheel for voyage-analytics (pyproject.toml): finished with status 'done'
+[2026-10-12T04:30:49.232Z]   Created wheel for voyage-analytics: filename=voyage_analytics-0.1.0-py3-none-any.whl size=13747 sha256=c226d048c962b1e62ce6d724dd9aea369525a4b239da9d9d1de9766fc0bbef69
+[2026-10-12T04:30:49.232Z]   Stored in directory: /tmp/pip-ephem-wheel-cache-kjvhmbk3/wheels/d2/f2/92/3e21686feb9af0f3d93f15f1e4741ad9fc8759c343900b9687
+[2026-10-12T04:30:49.232Z] Successfully built voyage-analytics
+[2026-10-12T04:30:49.232Z] Installing collected packages: voyage-analytics
+[2026-10-12T04:30:49.232Z]   Attempting uninstall: voyage-analytics
+[2026-10-12T04:30:49.232Z]     Found existing installation: voyage-analytics 0.1.0
+[2026-10-12T04:30:49.232Z]     Uninstalling voyage-analytics-0.1.0:
+[2026-10-12T04:30:49.232Z]       Successfully uninstalled voyage-analytics-0.1.0
+[2026-10-12T04:30:49.485Z] Successfully installed voyage-analytics-0.1.0
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Tests)
+[Pipeline] sh
+[2026-10-12T04:30:51.762Z] + .ci-venv/bin/python -m pytest -q --junitxml=reports/tests.xml
+[2026-10-12T04:31:03.213Z] .............                                                            [100%]
+[2026-10-12T04:31:03.218Z] 13 passed in 9.47s
+Post stage
+[Pipeline] junit
+[2026-10-12T04:31:04.812Z] Recording test results
+[2026-10-12T04:31:05.379Z] [Checks API] No suitable checks publisher found.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
+[2026-10-12T04:31:06.962Z] + git rev-parse --short=12 HEAD
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] sh
+[2026-10-12T04:31:07.696Z] + docker build -f docker/Dockerfile.api -t ghcr.io/techysuman27/voyage-api:a6c36ef01321-3 .
+[2026-10-12T04:31:08.319Z] DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+[2026-10-12T04:31:08.319Z]             Install the buildx component to build images with BuildKit:
+[2026-10-12T04:31:08.319Z]             https://docs.docker.com/go/buildx/
+[2026-10-12T04:31:08.319Z] 
+[2026-10-12T04:31:09.700Z] Sending build context to Docker daemon  2.984MB[2026-10-12T04:31:09.700Z] 
+[2026-10-12T04:31:10.285Z] Step 1/16 : FROM python:3.13-slim
+[2026-10-12T04:31:10.285Z]  ---> 70729b46c69b
+[2026-10-12T04:31:10.285Z] Step 2/16 : WORKDIR /app
+[2026-10-12T04:31:10.285Z]  ---> Using cache
+[2026-10-12T04:31:10.285Z]  ---> 34d84b34f808
+[2026-10-12T04:31:10.285Z] Step 3/16 : ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+[2026-10-12T04:31:10.285Z]  ---> Using cache
+[2026-10-12T04:31:10.285Z]  ---> ebdd11f8593a
+[2026-10-12T04:31:10.285Z] Step 4/16 : COPY requirements-runtime.txt ./
+[2026-10-12T04:31:10.540Z]  ---> Using cache
+[2026-10-12T04:31:10.540Z]  ---> 761d12724ac3
+[2026-10-12T04:31:10.540Z] Step 5/16 : RUN pip install --no-cache-dir -r requirements-runtime.txt
+[2026-10-12T04:31:10.540Z]  ---> Using cache
+[2026-10-12T04:31:10.540Z]  ---> 1070ba87bb16
+[2026-10-12T04:31:10.540Z] Step 6/16 : COPY pyproject.toml ./
+[2026-10-12T04:31:10.540Z]  ---> Using cache
+[2026-10-12T04:31:10.540Z]  ---> 6ba528fd3cf9
+[2026-10-12T04:31:10.540Z] Step 7/16 : COPY src ./src
+[2026-10-12T04:31:42.480Z]  ---> 41f320ee0cba
+[2026-10-12T04:31:42.480Z] Step 8/16 : RUN pip install --no-cache-dir --no-deps .
+[2026-10-12T04:31:43.034Z]  ---> Running in eed6d0b63da6
+[2026-10-12T04:31:49.528Z] Processing ./.
+[2026-10-12T04:31:49.528Z]   Installing build dependencies: started
+[2026-10-12T04:31:57.560Z]   Installing build dependencies: finished with status 'done'
+[2026-10-12T04:31:57.560Z]   Getting requirements to build wheel: started
+[2026-10-12T04:32:00.813Z]   Getting requirements to build wheel: finished with status 'done'
+[2026-10-12T04:32:00.813Z]   Preparing metadata (pyproject.toml): started
+[2026-10-12T04:32:04.045Z]   Preparing metadata (pyproject.toml): finished with status 'done'
+[2026-10-12T04:32:04.046Z] Building wheels for collected packages: voyage-analytics
+[2026-10-12T04:32:04.046Z]   Building wheel for voyage-analytics (pyproject.toml): started
+[2026-10-12T04:32:05.912Z]   Building wheel for voyage-analytics (pyproject.toml): finished with status 'done'
+[2026-10-12T04:32:05.912Z]   Created wheel for voyage-analytics: filename=voyage_analytics-0.1.0-py3-none-any.whl size=13747 sha256=621d05b050e8ce961e5947f364776f8ae8c518cf4a2ccd04595c0c0f03f3e85f
+[2026-10-12T04:32:05.912Z]   Stored in directory: /tmp/pip-ephem-wheel-cache-07rglch3/wheels/19/62/e5/caf0138816cbbc0c92b8fb19626cf9ac282f22194a65231821
+[2026-10-12T04:32:05.912Z] Successfully built voyage-analytics
+[2026-10-12T04:32:06.163Z] Installing collected packages: voyage-analytics
+[2026-10-12T04:32:06.164Z] Successfully installed voyage-analytics-0.1.0
+[2026-10-12T04:32:06.164Z] [91mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+[2026-10-12T04:32:14.213Z] [0m ---> Removed intermediate container eed6d0b63da6
+[2026-10-12T04:32:14.213Z]  ---> 5383d801524d
+[2026-10-12T04:32:14.213Z] Step 9/16 : COPY api ./api
+[2026-10-12T04:32:18.371Z]  ---> 626cba41004e
+[2026-10-12T04:32:18.371Z] Step 10/16 : COPY models ./models
+[2026-10-12T04:32:26.417Z]  ---> 36a4e659531b
+[2026-10-12T04:32:26.417Z] Step 11/16 : COPY reports/catalogue.json ./reports/catalogue.json
+[2026-10-12T04:32:34.511Z]  ---> 84a60c4215c3
+[2026-10-12T04:32:34.511Z] Step 12/16 : RUN useradd --uid 10001 --create-home voyage
+[2026-10-12T04:32:34.511Z]  ---> Running in 17484eafc46f
+[2026-10-12T04:32:41.071Z]  ---> Removed intermediate container 17484eafc46f
+[2026-10-12T04:32:41.071Z]  ---> 515695c414aa
+[2026-10-12T04:32:41.071Z] Step 13/16 : USER voyage
+[2026-10-12T04:32:41.071Z]  ---> Running in e89036c82099
+[2026-10-12T04:32:46.300Z]  ---> Removed intermediate container e89036c82099
+[2026-10-12T04:32:46.300Z]  ---> 56657faf11d7
+[2026-10-12T04:32:46.300Z] Step 14/16 : EXPOSE 8000
+[2026-10-12T04:32:46.300Z]  ---> Running in f3c847db5450
+[2026-10-12T04:32:51.540Z]  ---> Removed intermediate container f3c847db5450
+[2026-10-12T04:32:51.540Z]  ---> 0644c01be7e6
+[2026-10-12T04:32:51.540Z] Step 15/16 : HEALTHCHECK --interval=30s --timeout=5s --start-period=30s CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/ready', timeout=3)"
+[2026-10-12T04:32:51.540Z]  ---> Running in db1ae05070aa
+[2026-10-12T04:32:56.769Z]  ---> Removed intermediate container db1ae05070aa
+[2026-10-12T04:32:56.770Z]  ---> 24aba27b5134
+[2026-10-12T04:32:56.770Z] Step 16/16 : CMD ["waitress-serve", "--host=0.0.0.0", "--port=8000", "--call", "api.app:create_app"]
+[2026-10-12T04:32:57.032Z]  ---> Running in 1f37e11167eb
+[2026-10-12T04:33:02.323Z]  ---> Removed intermediate container 1f37e11167eb
+[2026-10-12T04:33:02.323Z]  ---> c5d427cd68ed
+[2026-10-12T04:33:02.323Z] Successfully built c5d427cd68ed
+[2026-10-12T04:33:02.591Z] Successfully tagged ghcr.io/techysuman27/voyage-api:a6c36ef01321-3
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Container prediction check)
+[Pipeline] sh
+[2026-10-12T04:33:05.084Z] + set -eu
+[2026-10-12T04:33:05.086Z] + docker run -d ghcr.io/techysuman27/voyage-api:a6c36ef01321-3
+[2026-10-12T04:33:06.956Z] + container=ecc5183996ac400af61d1d638a5f669d30f2d493e3365d6553cdfabffd7150ee
+[2026-10-12T04:33:06.956Z] + trap docker rm -f "$container" EXIT
+[2026-10-12T04:33:06.956Z] + docker cp scripts/wait_ready.py ecc5183996ac400af61d1d638a5f669d30f2d493e3365d6553cdfabffd7150ee:/tmp/wait_ready.py
+[2026-10-12T04:33:06.959Z] + docker cp scripts/smoke_test.py ecc5183996ac400af61d1d638a5f669d30f2d493e3365d6553cdfabffd7150ee:/tmp/smoke_test.py
+[2026-10-12T04:33:07.215Z] + docker exec ecc5183996ac400af61d1d638a5f669d30f2d493e3365d6553cdfabffd7150ee python /tmp/wait_ready.py --url http://127.0.0.1:8000
+[2026-10-12T04:33:19.469Z] + docker exec ecc5183996ac400af61d1d638a5f669d30f2d493e3365d6553cdfabffd7150ee python /tmp/smoke_test.py --url http://127.0.0.1:8000
+[2026-10-12T04:33:21.339Z] Readiness, prediction, validation and recommendation checks passed.
+[2026-10-12T04:33:21.339Z] + docker rm -f ecc5183996ac400af61d1d638a5f669d30f2d493e3365d6553cdfabffd7150ee
+[2026-10-12T04:33:21.893Z] ecc5183996ac400af61d1d638a5f669d30f2d493e3365d6553cdfabffd7150ee
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Local demo deployment)
+[Pipeline] sh
+[2026-10-12T04:33:24.140Z] + sh scripts/deploy_local_demo.sh ghcr.io/techysuman27/voyage-api:a6c36ef01321-3
+[2026-10-12T04:33:24.696Z] 2704640ba8e771b757f010b0690eb874dabc1faa7f1e6b48ae3988402fc7113a
+[2026-10-12T04:33:34.604Z] Readiness, prediction, validation and recommendation checks passed.
+[2026-10-12T04:33:34.605Z] Local deployment verified: http://127.0.0.1:18081 (ghcr.io/techysuman27/voyage-api:a6c36ef01321-3)
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Publish)
+Stage "Publish" skipped due to when conditional
+[Pipeline] getContext
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy and verify)
+Stage "Deploy and verify" skipped due to when conditional
+[Pipeline] getContext
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] archiveArtifacts
+[2026-10-12T04:33:38.493Z] Archiving artifacts
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // timestamps
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS

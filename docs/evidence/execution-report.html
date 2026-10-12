@@ -1,0 +1,33 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Voyage execution evidence</title>
+<style>body{max-width:1160px;margin:36px auto;padding:0 24px;font:16px Arial;color:#163349;background:#f5f7fa}
+h1{font-size:30px}h2{font-size:19px}section{background:white;border:1px solid #dbe5eb;border-radius:12px;padding:16px 22px;margin:18px 0}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;font:13px/1.6 Consolas,monospace}p{line-height:1.6}</style>
+<h1>Voyage Analytics — execution evidence</h1>
+<p>Captured output from actual verification commands on 11 October 2026. This sheet displays saved results; it is not a live service dashboard.</p>
+<p>Kubernetes was manually scaled from two to three replicas. The load test used a port-forward to one selected pod; it does not establish traffic balancing, automatic scaling or production capacity.</p><section><h2>Docker API container status</h2><pre>voyage-api-check Up 11 minutes (healthy) 127.0.0.1:18000-&gt;8000/tcp
+</pre></section><section><h2>Kubernetes rollout and manual scaling</h2><pre>NAME                         READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS   IMAGES             SELECTOR
+deployment.apps/voyage-api   3/3     3            3           3m36s   api          voyage-api:local   app=voyage-api
+
+NAME                             READY   STATUS    RESTARTS   AGE     IP           NODE                   NOMINATED NODE   READINESS GATES
+pod/voyage-api-f988c6bc5-b5vwq   1/1     Running   0          91s     10.244.0.7   voyage-control-plane   &lt;none&gt;           &lt;none&gt;
+pod/voyage-api-f988c6bc5-d2g72   1/1     Running   0          3m35s   10.244.0.5   voyage-control-plane   &lt;none&gt;           &lt;none&gt;
+pod/voyage-api-f988c6bc5-dtx8q   1/1     Running   0          3m35s   10.244.0.6   voyage-control-plane   &lt;none&gt;           &lt;none&gt;
+
+NAME                 TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE     SELECTOR
+service/voyage-api   ClusterIP   10.96.128.187   &lt;none&gt;        80/TCP    3m37s   app=voyage-api
+</pre></section><section><h2>Bounded inference test: 200 requests, eight workers</h2><pre>{
+  &quot;requests&quot;: 200,
+  &quot;workers&quot;: 8,
+  &quot;successful&quot;: 200,
+  &quot;p50_ms&quot;: 693.2698999298736,
+  &quot;p95_ms&quot;: 1182.955599972047
+}</pre></section><section><h2>Public Flask prediction response</h2><pre>{
+  &quot;model_version&quot;: &quot;dac3c974d6ea4aeb9d8ca90bec6a0318&quot;,
+  &quot;predicted_price&quot;: 1429.4,
+  &quot;request_id&quot;: &quot;fab89aaa5111412480b2e90c79d5a842&quot;,
+  &quot;units&quot;: &quot;dataset currency units&quot;,
+  &quot;warnings&quot;: [
+    &quot;Historical estimate in dataset currency units; not a live fare quote.&quot;,
+    &quot;Date is beyond the training period; current market accuracy is unverified.&quot;
+  ]
+}</pre></section><p>Report generated: 2026-10-11T14:05:12.826876+00:00</p></html>

@@ -184,10 +184,16 @@ The Jenkinsfile needs a Linux agent with Python 3.13, Docker and kubectl. It ins
 
 ## Free public demo
 
-The planned demo uses Render's free web service for the API and Streamlit Community Cloud for the UI. Deploy the `render.yaml` blueprint from your own account, then configure the actual API URL for the Streamlit application. These account-authorized deployments are pending. Free Render instances may sleep after inactivity and cannot demonstrate Kubernetes autoscaling; cluster evidence is recorded separately.
+The public demo uses [Render for the API](https://voyage-analytics-api-kqju.onrender.com/health/ready) and [Streamlit Community Cloud for the UI](https://voyage-analytics-suman.streamlit.app/). Public prediction, invalid-input handling and recommendation checks passed. Free Render instances may sleep after inactivity; the app allows for cold starts. Kubernetes scaling is demonstrated separately on the local cluster.
 
 Current platform documentation: [Render free services](https://render.com/docs/free), [Streamlit Community Cloud](https://docs.streamlit.io/deploy/streamlit-community-cloud). Do not present the demo as a production SLA-backed service.
 
 ## Submission and recording
 
+The [public submission folder](https://drive.google.com/drive/folders/1Vo7sHLTrZDmXsK7mHWkbmV8JNEC8LI9x) contains the executed notebooks and workflow report. Notebook links: [regression](https://colab.research.google.com/drive/1OzPywOfZkmzSpEqrx4p2J61Dpfjdh558), [classification](https://colab.research.google.com/drive/17kI3qL3QGaHoe4i0bCJJK4GivtpoMSfi), and [recommendations](https://colab.research.google.com/drive/1u31sfhp2egolu9DR4epyRoPhZyZ-tznD).
+
+For the demonstrated small-machine operational setup, use `docker compose -f compose.yaml -f compose.ops-local.yaml --profile ops up -d postgres mlflow airflow`. The override reuses the training image for MLflow and exposes that separate tracking store on localhost:15000. Original modeling runs remain in the host SQLite store. Jenkins is password protected on localhost:8081; its local password and all service state are excluded from Git. Its `LOCAL_DEPLOY` option releases the tested image to localhost:18081 and restores the previous local container if the new release fails its checks. Registry publishing and Kubernetes release remain separate optional parameters.
+
 See [workflow narrative](docs/workflow.md), [verification ledger](docs/verification.md), and [recording outline](docs/video_walkthrough.md). The pasted course rules conflict between 15-minute and 40-minute minimums; prepare 40–45 minutes unless the mentor confirms otherwise. The video should focus on the regression lifecycle while the repository and notebooks cover all three tasks.
+
+The [Google Docs workflow report](https://docs.google.com/document/d/1jJBwVxhxs4UJRcC9Sj1YHONcyWLAURWG-AClfDiyzZc/edit) includes actual screenshots and omits tool installation instructions. Its seven-page Google-rendered export was reviewed. Use the [demo guide](docs/demo_guide.md) to open the local evidence and services before recording.
