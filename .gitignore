@@ -23,3 +23,6 @@ reports/notebook_execution/
 .ci-venv/
 reports/port-forward.log
 reports/release-deployment.yml
+models/candidates/
+reports/scheduled/
+submission/*_sanitized.docx

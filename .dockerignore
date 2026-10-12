@@ -16,3 +16,6 @@ artifacts-local
 .streamlit/secrets.toml
 .ci-venv
 reports/notebook_execution
+models/candidates
+reports/scheduled
+submission

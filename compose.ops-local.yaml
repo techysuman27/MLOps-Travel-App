@@ -1,0 +1,20 @@
+# Reuse the verified training environment on a small local demonstration machine.
+# Run with: docker compose -f compose.yaml -f compose.ops-local.yaml --profile ops up -d postgres mlflow airflow
+services:
+  mlflow:
+    image: almabettermasterproject-airflow:latest
+    build: !reset null
+    entrypoint: /opt/voyage-venv/bin/mlflow
+    environment:
+      MLFLOW_SERVER_ENABLE_JOB_EXECUTION: 'false'
+    working_dir: /opt/airflow
+    command: ["server", "--host", "0.0.0.0", "--port", "5000", "--workers", "1", "--backend-store-uri", "sqlite:////opt/airflow/mlflow.db", "--artifacts-destination", "/opt/airflow/artifacts", "--allowed-hosts", "localhost:15000,127.0.0.1:15000,mlflow:5000"]
+    ports: !override ["127.0.0.1:15000:5000"]
+    volumes: !override ["scheduled-tracking:/opt/airflow"]
+  airflow:
+    environment:
+      AIRFLOW__CORE__PARALLELISM: '2'
+      AIRFLOW__CORE__MAX_ACTIVE_TASKS_PER_DAG: '1'
+      AIRFLOW__API__WORKERS: '1'
+volumes:
+  scheduled-tracking:

@@ -3,6 +3,7 @@ pipeline {
   agent any
   options { timestamps(); disableConcurrentBuilds() }
   parameters {
+    booleanParam(name: 'LOCAL_DEPLOY', defaultValue: false, description: 'Deploy the tested image to this demo Docker host on localhost:18081')
     booleanParam(name: 'PUBLISH', defaultValue: false, description: 'Push tested API image to the configured registry')
     booleanParam(name: 'DEPLOY', defaultValue: false, description: 'Publish and roll out to the configured Kubernetes cluster')
     string(name: 'IMAGE_REPOSITORY', defaultValue: 'ghcr.io/techysuman27/voyage-api', description: 'Container repository you own')
@@ -38,6 +39,10 @@ pipeline {
           docker exec "$container" python /tmp/smoke_test.py --url http://127.0.0.1:8000
         '''
       }
+    }
+    stage('Local demo deployment') {
+      when { expression { params.LOCAL_DEPLOY } }
+      steps { sh 'sh scripts/deploy_local_demo.sh "$IMAGE_REPOSITORY:$RELEASE_TAG"' }
     }
     stage('Publish') {
       when { expression { params.PUBLISH || params.DEPLOY } }

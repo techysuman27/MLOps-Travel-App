@@ -13,9 +13,10 @@ with DAG('voyage_regression_lifecycle', start_date=datetime(2026, 1, 1, tzinfo=t
          schedule='0 2 * * 0', catchup=False, max_active_runs=1,
          default_args={'owner': 'techysuman27', 'retries': 1, 'retry_delay': timedelta(minutes=2)},
          tags=['voyage', 'regression']) as dag:
-    validate = BashOperator(task_id='validate_source', bash_command=f'{PYTHON} -m voyage.cli validate {COMMON}')
-    train = BashOperator(task_id='train_compare_and_evaluate', bash_command=f'{PYTHON} -m voyage.cli train --task flights {COMMON}')
-    approve = BashOperator(task_id='gate_and_approve_candidate', bash_command=f'{PYTHON} -m voyage.cli promote --task flights {COMMON}')
+    validate = BashOperator(task_id='validate_source', cwd=ROOT, bash_command=f'{PYTHON} -m voyage.cli validate {COMMON}')
+    train = BashOperator(task_id='train_compare_and_evaluate', cwd=ROOT, bash_command=f'{PYTHON} -m voyage.cli train --task flights {COMMON}',
+                         env={'OMP_NUM_THREADS': '2', 'OPENBLAS_NUM_THREADS': '2'}, append_env=True)
+    approve = BashOperator(task_id='gate_and_approve_candidate', cwd=ROOT, bash_command=f'{PYTHON} -m voyage.cli promote --task flights {COMMON}')
     validate >> train >> approve
 
 # Approved candidates stay under their run folder. A reviewed Jenkins release
