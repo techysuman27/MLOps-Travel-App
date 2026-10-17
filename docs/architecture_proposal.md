@@ -1,6 +1,6 @@
 # Voyage Analytics: proposed architecture
 
-Status: design proposal following source review and initial data audit. These components have not yet been implemented or deployed. Reference review is in reference_review.md; course deliverables are in project_requirements.md.
+Status: historical design proposal, written before implementation. For the implemented system, diagram and sequential build guide, read [architecture walkthrough](architecture_walkthrough.md). Current execution evidence is recorded in [verification ledger](verification.md). The plans below are not proof that every proposed capability was executed.
 
 ## Design goal
 
