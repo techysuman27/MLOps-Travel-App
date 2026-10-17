@@ -1,5 +1,7 @@
 # Recording outline — regression lifecycle, 40–45 minutes
 
+This is the earlier extended outline. For the student's updated 30-minute maximum, use [the current word-for-word recording script](recording_script_30_minutes.md), including its screen-by-screen directions.
+
 The course text contains conflicting minimum durations. This outline targets the stricter 40-minute requirement; confirm with the mentor before shortening it. Record only after the evidence checklist is complete. This is a speaking outline, not a claim that pending services already ran.
 
 | Time | Topic | What to show and explain |

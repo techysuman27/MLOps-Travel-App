@@ -56,4 +56,4 @@ The evidence in `docs/evidence/kubernetes-rollout.txt` already records the verif
 
 ## Submission
 
-Use the public Drive folder for the Project link, and your recorded video link for the Video link. Follow `video_walkthrough.md` for the regression-focused speaking sequence. The course instructions contain both a 15-minute and a 40-minute minimum; the prepared outline covers 40–45 minutes. Record a short microphone/readability test first, then record your own explanation. The video is the remaining student-created submission artifact.
+Use the public Drive folder for the Project link, and your recorded video link for the Video link. Follow [the word-for-word recording script](recording_script_30_minutes.md), prepared for your updated maximum of 30 minutes. It specifies what to open and what to say, with a target of 25–28 minutes including navigation. The older `video_walkthrough.md` is retained as an extended outline, not the current recording plan. Record a short microphone/readability test first, then record your own explanation. The video is the remaining student-created submission artifact.
