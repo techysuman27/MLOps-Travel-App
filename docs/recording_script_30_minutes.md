@@ -1,5 +1,7 @@
 # Voyage Analytics: word-for-word recording script
 
+This is the previous version. Use [the revised AlmaBetter-aligned script](recording_script_almabetter.md) for the current recording: eight sections, simpler language, all three model use cases, and a maximum of 19 minutes.
+
 Maximum video length: 30 minutes. Aim to finish in 25–28 minutes, leaving room for navigation. The timestamps below are pacing budgets, not a requirement to keep talking until each timestamp. Read naturally; rehearse once and shorten pauses if necessary. Speak only the blockquoted paragraphs. Instructions outside the quotes are actions for you, not narration.
 
 This version follows your updated 30-minute maximum and replaces the earlier 40–45 minute recording plan for your recording. It focuses on flight-price regression. Do not claim that you have demonstrated an operation live when you show a saved screenshot.
