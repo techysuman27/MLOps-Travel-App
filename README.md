@@ -25,22 +25,15 @@ Full candidate comparisons, split details, limitations and provenance are in [re
 
 ## Architecture
 
-```mermaid
-flowchart LR
-    Data[Course CSV snapshots] --> Validate[Validate and fingerprint]
-    Validate --> Train[Shared training package]
-    Train --> Track[MLflow experiments and artifacts]
-    Track --> Gate{Validation quality gate}
-    Gate -->|Pass| Release[Versioned approved bundle]
-    Release --> CI[Jenkins tests and image build]
-    CI --> K8s[Kubernetes serving deployment]
-    K8s --> API[Flask API]
-    UI[Streamlit] --> API
-    Airflow[Airflow schedule] -. orchestrates .-> Validate
-    Airflow -. orchestrates .-> Train
-```
+![Architecture: prepare and train, package and deploy, answer requests, review and improve](docs/diagrams/voyage-architecture.png)
 
-The fitted preprocessing pipeline travels with the estimator. API startup verifies artifact checksums; missing models fail readiness. Training and serving do not maintain competing feature implementations. Scheduled candidates stay separate from the deployed release. See the [architecture design](docs/architecture_proposal.md).
+Read the diagram from top to bottom: **A. Train models → B. Review, package and deploy → C. Answer user requests → D. Review and improve.** Docker is an explicit packaging step. Airflow runs the regression training workflow; MLflow records its experiments. Neither tool runs for every user prediction.
+
+The public Render API, the verified Jenkins local Docker deployment, and the local Kubernetes demonstration are separate deployment paths. Scheduled model candidates require a reviewed handoff before release. The fitted preprocessing travels with the saved model, and the API checks artifact integrity at startup.
+
+**Plain-language terms:** validate = check data; fingerprint = a checksum identifying the dataset version; shared training package = reusable Python training functions in `src/voyage`, called by notebooks and Airflow.
+
+See the [step-by-step architecture guide](docs/architecture_walkthrough.md) or [download the diagram as PDF](docs/diagrams/voyage-architecture.pdf).
 
 ## Project layout
 

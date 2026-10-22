@@ -6,7 +6,16 @@
 
 The architecture has three connected activities: teaching models from historical data, packaging and releasing the application, and answering user requests. Training happens before serving. Opening the website does not start Airflow or retrain a model.
 
+## What the old diagram's terms meant
+
+- **Validate:** check that the data is usable. For example, required columns must exist, dates must be readable, and prices must be valid numbers. Data validation is different from evaluating model accuracy on the validation split.
+- **Fingerprint:** calculate a SHA-256 checksum for a source file. Think of it as a digital identifier: changing the file changes its checksum. Recording it helps trace a model back to the exact dataset used. It does not encrypt or anonymize the data.
+- **Shared training package:** reusable Python functions in `src/voyage` for preparing data, training models and evaluating results. Notebooks and Airflow call these functions instead of maintaining separate copies of the training logic. It is our project code, not another service to install or host.
+- **Docker:** packages the API, required libraries and saved model into an image. Running that image creates a container. Jenkins builds and tests it; Render runs the public API image; the separate Kubernetes demonstration runs API containers as replicas. Docker is now explicitly shown at step 7.
+
 ## Build the project in this order
+
+The diagram numbers describe the system flow, including what happens after deployment. The list below describes the order in which a developer should build it; automation comes after the corresponding manual process works.
 
 1. **Define the product and create the repository.** Decide what goes in and what comes out: journey details produce a historical fare estimate; booking history and preferences produce hotel suggestions; age/company support an educational source-label experiment. Create the GitHub repository and separate folders for data handling, shared model code, notebooks, API, interface, tests and deployment. Commit meaningful changes throughout development.
 

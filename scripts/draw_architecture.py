@@ -1,84 +1,81 @@
-"""Draw the implemented capstone architecture with deterministic, readable labels."""
+"""Render a plain-language map of the implemented workflow (PNG and PDF)."""
 from pathlib import Path
-from PIL import Image, ImageDraw, ImageFont
 import math
+from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'docs/diagrams'
 OUT.mkdir(exist_ok=True)
-im = Image.new('RGB', (2500, 1830), '#f5f7fb')
+im = Image.new('RGB', (2200, 2260), '#f3f6fb')
 d = ImageDraw.Draw(im)
-regular = 'C:/Windows/Fonts/segoeui.ttf'
-bold = 'C:/Windows/Fonts/segoeuib.ttf'
-def font(size, strong=False): return ImageFont.truetype(bold if strong else regular, size)
-def text(x,y,s,size=29,color='#334155',strong=False):
-    d.text((x,y),s,font=font(size,strong),fill=color,spacing=12)
-def label(x,y,s,color):
-    bounds=d.textbbox((x,y),s,font=font(25))
-    d.rectangle((bounds[0]-6,bounds[1]-4,bounds[2]+6,bounds[3]+4),fill='#f5f7fb')
-    text(x,y,s,25,color)
-def box(x,y,title,lines,color='#197b87',h=220):
-    d.rounded_rectangle((x,y,x+500,y+h),radius=20,fill='white',outline='#d3dce8',width=2)
-    d.rounded_rectangle((x,y,x+9,y+h),radius=4,fill=color)
-    text(x+28,y+21,title,34,color,True)
-    for i,line in enumerate(lines): text(x+28,y+78+i*37,line,27)
-def arrow(points,color='#53657d',dashed=False,both=False):
-    for a,b in zip(points,points[1:]):
-        if not dashed: d.line([a,b],fill=color,width=5)
-        else:
-            length=math.dist(a,b)
-            for n in range(0,int(length),22):
-                p=n/length;q=min(n+12,length)/length
-                d.line([(a[0]+(b[0]-a[0])*p,a[1]+(b[1]-a[1])*p),(a[0]+(b[0]-a[0])*q,a[1]+(b[1]-a[1])*q)],fill=color,width=4)
-    def head(a,b):
-        angle=math.atan2(b[1]-a[1],b[0]-a[0])
-        d.polygon([b,(b[0]-19*math.cos(angle-.48),b[1]-19*math.sin(angle-.48)),(b[0]-19*math.cos(angle+.48),b[1]-19*math.sin(angle+.48))],fill=color)
-    head(points[-2],points[-1])
-    if both: head(points[1],points[0])
 
-text(70,45,'VOYAGE ANALYTICS',52,'#102b49',True)
-text(70,115,'End-to-end architecture  |  Train once, serve many requests, improve through reviewed releases',30)
-text(70,190,'A. MODEL DEVELOPMENT  •  Shared Python code, explained in three Colab notebooks',28,'#197b87',True)
-box(70,245,'Course datasets',['flights.csv • users.csv','hotels.csv','Link users and trips safely.'])
-box(680,245,'Validate & prepare',['Check schema; explore data.','Split train / validation / test.','Fit preprocessing on training.'])
-box(1290,245,'Train & evaluate',['Flight-price regression','Educational label classification','Hotel recommendation ranking'])
-box(1900,245,'Approve & save',['Select using validation scores.','Evaluate on the held-out test.','joblib + version + checksum'])
-for x in [570,1180,1790]: arrow([(x,355),(x+110,355)])
-text(70,600,'B. AUTOMATION & RELEASE  •  Administrative services run locally',28,'#7853a5',True)
-box(70,655,'Airflow + PostgreSQL',['Weekly regression DAG','Validate → train → approve','New candidate stays isolated.'],'#7853a5')
-box(680,655,'MLflow tracking',['Parameters, metrics, run IDs','Model versions and artifacts','Experiment record, not the API'],'#7853a5')
-box(1290,655,'GitHub release source',['Application + shared code','Reviewed, approved bundles','Notebooks + infrastructure'],'#7853a5')
-box(1900,655,'Jenkins + Docker',['Checkout → 13 tests → build','Image includes pinned models.','Run real prediction checks.'],'#7853a5')
-arrow([(70,710),(15,710),(15,530),(930,530),(930,465)],'#7853a5',True)
-text(80,485,'Orchestrates regression pipeline',25,'#7853a5')
-arrow([(1540,465),(930,655)],'#7853a5',True)
-label(1110,540,'Log experiments','#7853a5')
-arrow([(2150,465),(1540,655)],'#b27618',True)
-label(1770,540,'Reviewed handoff','#98600b')
-arrow([(1790,765),(1900,765)])
-text(70,980,'C. RUNNING APPLICATION  •  A user request performs inference; it does not retrain models',28,'#2563a6',True)
-box(70,1040,'User',['Enter journey details','or hotel preferences.','Read the returned result.'],'#2563a6')
-box(680,1040,'Streamlit interface',['Public: Community Cloud','Flights • hotels • insights','Educational classification lab'],'#2563a6')
-box(1290,1040,'Flask prediction API',['Validate incoming JSON.','Load saved models at startup.','Return result + model version.'],'#2563a6')
-box(1900,1010,'Deployment environments',['PUBLIC: Render Docker API','LOCAL: Jenkins Docker release','LOCAL: Kubernetes replicas','Kubernetes scaled manually.'],'#2563a6',h=285)
-arrow([(2150,875),(2150,1010)])
-text(1955,925,'Local CD verified',25,'#2563a6')
-arrow([(1900,1150),(1790,1150)])
-arrow([(570,1150),(680,1150)],both=True)
-arrow([(1180,1150),(1290,1150)],both=True)
-text(70,1310,'Input → Streamlit → Flask → saved model → result on screen',27,'#2563a6')
-d.rounded_rectangle((680,1410,1790,1610),radius=20,fill='#e8eff7',outline='#bacbdf',width=2)
-text(710,1430,'MONITOR, REVIEW & IMPROVE',33,'#102b49',True)
-text(710,1480,'Request latency, errors and model version; historical drift reports.',27)
-text(710,1520,'Actual later outcomes are needed to measure prediction accuracy.',27)
-text(710,1560,'A reviewed retraining decision starts the next model-development cycle.',26)
-arrow([(1540,1260),(1540,1410)])
-arrow([(680,1510),(35,1510),(35,765),(70,765)],'#7853a5',True)
-text(75,1430,'Human review',26,'#7853a5',True)
-text(75,1470,'informs retraining',25,'#7853a5')
-text(70,1660,'READ THE CONNECTIONS',27,'#102b49',True)
-text(70,1704,'Solid arrows: data / software / requests.   Dashed arrows: orchestration, tracking or a reviewed handoff.',27)
-text(70,1749,'Render is a separate public deployment. Jenkins-to-Kubernetes CD and automatic HPA scaling are not verified.',27,'#79551c')
-im.save(OUT/'voyage-architecture.png',optimize=True)
-im.save(OUT/'voyage-architecture.pdf','PDF',resolution=150)
-print(OUT/'voyage-architecture.png')
+def text(x, y, value, size=27, color='#334155', bold=False):
+    name = 'segoeuib.ttf' if bold else 'segoeui.ttf'
+    f = ImageFont.truetype('C:/Windows/Fonts/' + name, size)
+    d.text((x, y), value, font=f, fill=color, spacing=10)
+
+def panel(y, height, heading, color):
+    d.rounded_rectangle((45, y, 2155, y + height), 24, fill='white', outline='#dce3ee', width=2)
+    text(75, y + 22, heading, 34, color, True)
+
+def box(x, y, title, lines, color='#167a70', width=455, height=190):
+    d.rounded_rectangle((x, y, x + width, y + height), 16, fill='#f8fafc', outline=color, width=2)
+    text(x + 20, y + 17, title, 30, color, True)
+    for n, line in enumerate(lines):
+        text(x + 20, y + 67 + n * 35, line, 25)
+
+def arrow(points, color='#64748b'):
+    d.line(points, fill=color, width=4)
+    a, b = points[-2:]
+    angle = math.atan2(b[1]-a[1], b[0]-a[0])
+    d.polygon([b, (b[0]-17*math.cos(angle-.5), b[1]-17*math.sin(angle-.5)),
+               (b[0]-17*math.cos(angle+.5), b[1]-17*math.sin(angle+.5))], fill=color)
+
+xs = [80, 605, 1130, 1655]
+text(65, 35, 'VOYAGE ANALYTICS', 49, '#15304f', True)
+text(65, 105, 'How data becomes a working travel application', 33)
+text(65, 155, 'Read from top to bottom. Within each numbered row, follow the arrows from left to right.', 26)
+
+panel(220, 510, 'A. PREPARE AND TRAIN  |  Build the models before users make predictions', '#167a70')
+box(xs[0], 300, '1. Collect the data', ['Flights: journeys and prices', 'Users: age, company, labels', 'Hotels: stays and bookings'])
+box(xs[1], 300, '2. Check and prepare', ['Check columns and values.', 'Record the dataset version.', 'Split training / validation / test.'])
+box(xs[2], 300, '3. Train and compare', ['Predict flight prices.', 'Classify source gender labels.*', 'Rank hotel suggestions.'])
+box(xs[3], 300, '4. Evaluate and save', ['Choose using validation data.', 'Measure final test results.', 'Save model + preprocessing.'])
+for x in xs[:-1]: arrow([(x+455, 395), (x+525, 395)])
+text(85, 515, 'REUSABLE PYTHON CODE: src/voyage', 27, '#167a70', True)
+text(85, 555, 'The notebooks and Airflow call the same training functions, so the logic stays consistent.', 26)
+box(80, 610, 'Airflow: runs regression steps 2–4 in order', [], '#7853a5', 990, 80)
+box(1120, 610, 'MLflow: records experiments and model versions', [], '#7853a5', 990, 80)
+
+arrow([(1100, 730), (1100, 815)], '#b07820')
+text(1140, 746, 'Human review: select the approved model for release', 25, '#936018')
+
+panel(815, 610, 'B. PACKAGE AND DEPLOY  |  Turn the approved model into a running service', '#2563a6')
+box(xs[0], 900, '5. GitHub repository', ['Approved model files', 'Flask API + Streamlit code', 'Tests + deployment settings'], '#2563a6')
+box(xs[1], 900, '6. Jenkins checks', ['Get the repository code.', 'Run automated tests.', 'Start the Docker image build.'], '#2563a6')
+box(xs[2], 900, '7. DOCKER image', ['Package API code, libraries', 'and approved model together.', 'Test predictions in a container.'], '#2563a6')
+box(xs[3], 900, '8. Local deployment', ['Jenkins runs the tested image.', 'A local Flask API is available.', 'This deployment was verified.'], '#2563a6')
+for x in xs[:-1]: arrow([(x+455, 995), (x+525, 995)])
+text(85, 1120, 'SEPARATE DEPLOYMENT PATHS  |  These are not automatic stages of the verified Jenkins run', 26, '#2563a6', True)
+box(80, 1170, 'Public demonstration', ['GitHub → Render builds/runs the Docker API.', 'GitHub → Streamlit Community Cloud runs the UI.', 'The public UI calls the public Render API.'], '#2563a6', 990, 200)
+box(1120, 1170, 'Local Kubernetes demonstration', ['Load the API Docker image → run API replicas.', 'Verified: manually scale from 2 to 3 replicas.', 'Jenkins → Kubernetes and autoscaling: not verified.'], '#2563a6', 990, 200)
+
+arrow([(1100, 1425), (1100, 1500)])
+text(1140, 1440, 'Once deployed, the application can answer requests', 25)
+
+panel(1500, 430, 'C. USE THE APPLICATION  |  What happens each time a user clicks Predict', '#a45d20')
+box(xs[0], 1585, '9. User enters details', ['Journey details for a price,', 'or preferences for hotels.', 'Click the action button.'], '#a45d20')
+box(xs[1], 1585, '10. Streamlit screen', ['Collect the form inputs.', 'Send a request to Flask.', 'Wait for the result.'], '#a45d20')
+box(xs[2], 1585, '11. Flask API', ['Check the incoming inputs.', 'Use the saved model pipeline.', 'Create the prediction response.'], '#a45d20')
+box(xs[3], 1585, '12. Result on screen', ['Flask sends the result back.', 'Streamlit displays the estimate', 'or hotel recommendations.'], '#a45d20')
+for x in xs[:-1]: arrow([(x+455, 1680), (x+525, 1680)])
+text(85, 1810, 'Request → saved model → response. This flow does not train a new model.', 29, '#a45d20', True)
+text(85, 1860, 'Docker provides the API environment. The hosting service keeps the API running.', 26)
+
+panel(1980, 170, 'D. OBSERVE AND IMPROVE', '#7853a5')
+text(85, 2045, 'API logs: errors, response time and model version. Review data changes and later real outcomes.', 27)
+text(85, 2090, 'Human review → decide whether to retrain → repeat A → review and release through B.', 27)
+text(65, 2190, '* Classification is an educational source-label benchmark; it is not a reliable identity prediction.', 25)
+im.save(OUT / 'voyage-architecture.png', optimize=True)
+im.save(OUT / 'voyage-architecture.pdf', 'PDF', resolution=150)
+print(OUT / 'voyage-architecture.png')
